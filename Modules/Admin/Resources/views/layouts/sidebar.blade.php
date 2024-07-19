@@ -23,8 +23,12 @@
                 <li class=" nav-item"><a href="{{ route('admin.blog.category.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                     class="menu-title"> دسته بندی </span></a>
                 </li>
-
-
+                <li class=" nav-item"><a href="{{ route('admin.blog.post.index') }}"><i class="icon-layers"></i><span data-i18n=""
+                                                                                                                          class="menu-title"> پست ها </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.blog.label.index') }}"><i class="icon-layers"></i><span data-i18n=""
+                                                                                                                      class="menu-title"> برچسب ها </span></a>
+                </li>
 
             </ul>
         </div>

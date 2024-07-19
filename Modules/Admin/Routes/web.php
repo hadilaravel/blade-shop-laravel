@@ -2,6 +2,8 @@
 
 use \Illuminate\Support\Facades\Route;
 use Modules\Admin\Http\Controllers\Blog\PostCategoryController;
+use Modules\Admin\Http\Controllers\Blog\PostController;
+use Modules\Admin\Http\Controllers\Blog\LabelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,27 @@ Route::prefix('admin')->group(function (){
             Route::get('status/{postCategory}', [PostCategoryController::class, 'status'])->name('admin.blog.category.status');
         });
 
+        //         post
+        Route::prefix('post')->group(function () {
+            Route::get('/', [PostController::class, 'index'])->name('admin.blog.post.index');
+            Route::get('create', [PostController::class, 'create'])->name('admin.blog.post.create');
+            Route::post('store', [PostController::class, 'store'])->name('admin.blog.post.store');
+            Route::get('edit/{post}', [PostController::class, 'edit'])->name('admin.blog.post.edit');
+            Route::put('update/{post}', [PostController::class, 'update'])->name('admin.blog.post.update');
+            Route::delete('destroy/{post}', [PostController::class, 'destroy'])->name('admin.blog.post.destroy');
+            Route::get('status/{post}', [PostController::class, 'status'])->name('admin.blog.post.status');
+        });
 
+        //         label
+        Route::prefix('label')->group(function () {
+            Route::get('/', [LabelController::class, 'index'])->name('admin.blog.label.index');
+            Route::get('create', [LabelController::class, 'create'])->name('admin.blog.label.create');
+            Route::post('store', [LabelController::class, 'store'])->name('admin.blog.label.store');
+            Route::get('edit/{label}', [LabelController::class, 'edit'])->name('admin.blog.label.edit');
+            Route::put('update/{label}', [LabelController::class, 'update'])->name('admin.blog.label.update');
+            Route::delete('destroy/{label}', [LabelController::class, 'destroy'])->name('admin.blog.label.destroy');
+            Route::get('status/{label}', [LabelController::class, 'status'])->name('admin.blog.label.status');
+        });
 
     });
 

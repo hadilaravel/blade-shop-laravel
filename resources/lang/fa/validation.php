@@ -229,6 +229,8 @@ return [
         'article_id' => 'مقاله',
         'meta_keywords' => 'متا کلمات کلیدی',
         'meta_description' => 'متا توضیحات',
+        'commentable' => 'وضعیت نظر',
+        'post_id' => 'پست',
     ],
 
     'permission categories' => 'دسترسی به دسته بندی ها'
