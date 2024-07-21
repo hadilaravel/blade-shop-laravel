@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('head-tag')
-<title>دسته بندی</title>
+<title>دسته بندی تیکت ها</title>
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@
 
     <div class="row">
         <div class="col-12">
-            <h2 class="content-header">  دسته بندی</h2>
+            <h2 class="content-header">دسته بندی تیکت ها</h2>
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.blog.category.create') }}" class="btn btn-info btn-sm">ایجاد دسته بندی </a>
+                <a href="{{ route('admin.ticket.category.create') }}" class="btn btn-info btn-sm">ایجاد دسته بندی تیکت  </a>
             </section>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title-wrap bar-success">
-                            <h4 class="card-title"> دسته بندی</h4>
+                            <h4 class="card-title">دسته بندی تیکت ها</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -33,39 +33,31 @@
                                 <tr>
                                     <th>#</th>
                                     <th>نام</th>
-                                    <th>والد</th>
                                     <th>وضعیت</th>
-                                    <th>تعداد زیر دسته ها</th>
                                     <th>تاریخ ساخت</th>
                                     <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($categories as $key => $category)
+                                @foreach ($ticketCategories as $key => $ticketCategory)
                                     <tr>
                                         <th>{{ convertEnglishToPersian($key += 1) }}</th>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $ticketCategory->name }}</td>
                                         <td>
-                                            {{ $category->parent->name ?? '-'}}
+                                            <a href="{{ route('admin.ticket.category.status', $ticketCategory->id) }}" class="btn btn-{{ $ticketCategory->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $ticketCategory->status == 1 ? 'check' : 'window-close' }}"></i> </a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.blog.category.status', $category->id) }}" class="btn btn-{{ $category->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $category->status == 1 ? 'check' : 'window-close' }}"></i> </a>
+                                            {{ convertEnglishToPersian(jdate($ticketCategory->created_at)->format('Y-m-d')) }}
                                         </td>
                                         <td>
-                                           {{ $category->children->count() !== 0 ? convertEnglishToPersian($category->children->count()) : '-' }}
-                                        </td>
-                                        <td>
-                                            {{ convertEnglishToPersian(jdate($category->created_at)->format('Y-m-d')) }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.blog.category.edit', $category->id) }}" class="success p-0" data-original-title="" title="">
+                                            <a href="{{ route('admin.ticket.category.edit', $ticketCategory->id) }}" class="success p-0" data-original-title="" title="">
                                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
                                             </a>
-                                            <form class="d-inline " action="{{ route('admin.blog.category.destroy', $category->id) }}" method="post">
+                                            <form class="d-inline " action="{{ route('admin.ticket.category.destroy', $ticketCategory->id) }}" method="post">
                                                 @csrf
                                                 {{ method_field('delete') }}
                                                 <button class="danger p-0 border-0 bg-white outloneLi" data-original-title="" title="">
-                                                    <i class="fa fa-trash-o font-medium-3 mr-2"></i>
+                                                    <i class="fa fa-trash-o font-medium-3 mr-2 "></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -77,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                {{ $categories->links('pagination::bootstrap-4') }}
+                {{ $ticketCategories->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </section>

@@ -101,7 +101,7 @@
             }, 0);
         }
 
-        $('.logo-text').on('click', function () {
+        $('.logo-text').on('click', function (e) {
 
             var listItem = $sidebar_content.find('li.open.has-sub'),
                 activeItem = $sidebar_content.find('li.active');
@@ -236,7 +236,7 @@
                 openFullscreen()
             }
         });
-       
+
         document.addEventListener("fullscreenchange", function () {
             if (document.documentElement.fullscreen) {
                 $('.apptogglefullscreen').find('i').toggleClass('ft-minimize ft-maximize');
@@ -260,7 +260,7 @@ function openFullscreen() {
 }
 
 function closeFullscreen() {
-    
+
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.webkitExitFullscreen) { /* Safari */

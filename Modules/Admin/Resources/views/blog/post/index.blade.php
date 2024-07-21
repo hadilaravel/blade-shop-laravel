@@ -69,7 +69,7 @@
                                             <form class="d-inline " action="{{ route('admin.blog.post.destroy', $post->id) }}" method="post">
                                                 @csrf
                                                 {{ method_field('delete') }}
-                                                <button class="danger p-0 border-0 bg-white" data-original-title="" title="">
+                                                <button class="danger p-0 border-0 bg-white outloneLi" data-original-title="" title="">
                                                     <i class="fa fa-trash-o font-medium-3 mr-2"></i>
                                                 </button>
                                             </form>

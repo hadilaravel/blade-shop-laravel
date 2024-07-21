@@ -4,6 +4,9 @@ use \Illuminate\Support\Facades\Route;
 use Modules\Admin\Http\Controllers\Blog\PostCategoryController;
 use Modules\Admin\Http\Controllers\Blog\PostController;
 use Modules\Admin\Http\Controllers\Blog\LabelController;
+use Modules\Admin\Http\Controllers\Blog\CommentPostController;
+use Modules\Admin\Http\Controllers\Ticket\TicketCategoryController;
+use Modules\Admin\Http\Controllers\Ticket\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +58,44 @@ Route::prefix('admin')->group(function (){
             Route::get('status/{label}', [LabelController::class, 'status'])->name('admin.blog.label.status');
         });
 
+        //comment
+        Route::prefix('comment')->group(function () {
+            Route::get('/', [CommentPostController::class, 'index'])->name('admin.blog.comment.index');
+            Route::get('answered', [CommentPostController::class, 'answered'])->name('admin.blog.comment.answered');
+            Route::get('not-answer', [CommentPostController::class, 'notAnswer'])->name('admin.blog.comment.not-answer');
+            Route::get('answers/{comment}', [CommentPostController::class, 'answers'])->name('admin.blog.comment.answers');
+            Route::get('/show/{comment}', [CommentPostController::class, 'show'])->name('admin.blog.comment.show');
+            Route::delete('/destroy/{comment}', [CommentPostController::class, 'destroy'])->name('admin.blog.comment.destroy');
+            Route::get('/status/{comment}', [CommentPostController::class, 'status'])->name('admin.blog.comment.status');
+            Route::post('/answer/{comment}', [CommentPostController::class, 'answer'])->name('admin.blog.comment.answer');
+        });
+
+
     });
+
+    Route::prefix('ticket')->group(function (){
+
+        //        ticket
+        Route::get('/', [TicketController::class, 'index'])->name('admin.ticket.index');
+        Route::get('/show/{ticket}', [CommentPostController::class, 'show'])->name('admin.blog.comment.show');
+        Route::post('/answer/{ticket}', [CommentPostController::class, 'answer'])->name('admin.blog.comment.answer');
+        Route::delete('/destroy/{ticket}', [TicketController::class, 'destroy'])->name('admin.ticket.destroy');
+        Route::get('/status/{ticket}', [TicketController::class, 'status'])->name('admin.ticket.status');
+
+
+//        ticket category
+        Route::prefix('category')->group(function () {
+            Route::get('/', [TicketCategoryController::class, 'index'])->name('admin.ticket.category.index');
+            Route::get('/create', [TicketCategoryController::class, 'create'])->name('admin.ticket.category.create');
+            Route::post('/store', [TicketCategoryController::class, 'store'])->name('admin.ticket.category.store');
+            Route::get('/edit/{ticketCategory}', [TicketCategoryController::class, 'edit'])->name('admin.ticket.category.edit');
+            Route::put('/update/{ticketCategory}', [TicketCategoryController::class, 'update'])->name('admin.ticket.category.update');
+            Route::delete('/destroy/{ticketCategory}', [TicketCategoryController::class, 'destroy'])->name('admin.ticket.category.destroy');
+            Route::get('/status/{ticketCategory}', [TicketCategoryController::class, 'status'])->name('admin.ticket.category.status');
+        });
+
+
+    });
+
 
 });

@@ -16,7 +16,7 @@
                                                                                             class="menu-title">داشبورد</span></a>
                 </li>
 
-                <li class=" nav-item" style="border-bottom: 1px white solid" ><a href="#"><span data-i18n="" class="menu-title">
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش وبلاگ
                         </span></a>
                 </li>
@@ -28,6 +28,36 @@
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.blog.label.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title"> برچسب ها </span></a>
+                </li>
+                <li  class="has-sub nav-item"><a ><i class="icon-layers"></i><span data-i18n=""
+                                                                                          class="menu-title"> نظرات</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.blog.comment.index') }}" class="menu-item"> تمام نظرات </a>
+                        </li>
+                        <li><a href="{{ route('admin.blog.comment.answered') }}" class="menu-item">  نظرات پاسخ داده شده</a>
+                        </li>
+                        <li><a href="{{ route('admin.blog.comment.not-answer') }}" class="menu-item">  نظرات پاسخ داده نشده</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class=" nav-item liClass" ><a ><span data-i18n="" class="menu-title spanish">
+                            بخش تیکت ها
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.ticket.category.index') }}"><i class="fa fa-ticket"></i><span data-i18n=""
+                                                                                                                       class="menu-title"> دسته بندی تیکت ها </span></a>
+                </li>
+                <li  class="has-sub nav-item"><a ><i class="fa fa-ticket"></i><span data-i18n=""
+                                                                                           class="menu-title"> تیکت ها</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.blog.comment.index') }}" class="menu-item"> تمام تیکت ها </a>
+                        </li>
+                        <li><a href="{{ route('admin.blog.comment.answered') }}" class="menu-item">  تیک های پاسخ داده شده</a>
+                        </li>
+                        <li><a href="{{ route('admin.blog.comment.not-answer') }}" class="menu-item">  تیکت های پاسخ داده نشده</a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
