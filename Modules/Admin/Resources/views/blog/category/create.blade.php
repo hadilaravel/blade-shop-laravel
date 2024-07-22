@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('head-tag')
-<title>ایجاد دسته بندی</title>
+<title>ایجاددسته بندی پست</title>
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
                                 <div class="form-body">
 
                                     <h4 class="form-section">
-                                        ایجاد دسته بندی</h4>
+                                        ایجاد دسته بندی پست</h4>
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput5">نام : </label>

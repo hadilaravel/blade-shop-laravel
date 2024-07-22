@@ -38,7 +38,7 @@ class CommentPostController extends Controller
         $comments = [];
         foreach ($commentAs as $comment) {
             if ($comment->answers->count() !== 0 && $comment->parent_id == null) {
-                $comments = Comment::query()->orderBy('created_at', 'desc')->where('id', $comment->id)->paginate();
+                $comments = Comment::query()->orderBy('created_at', 'desc')->where('id', $comment->id)->paginate(8);
             }
         }
         return view('admin::blog.comment.index', compact('comments', 'title'));
@@ -58,7 +58,7 @@ class CommentPostController extends Controller
         $comments = [];
         foreach ($commentAs as $comment) {
             if ($comment->answers->count() == 0 && $comment->parent_id == null) {
-                $comments = Comment::query()->orderBy('created_at', 'desc')->where('id', $comment->id)->paginate();
+                $comments = Comment::query()->orderBy('created_at', 'desc')->where('id', $comment->id)->paginate(8);
             }
         }
         return view('admin::blog.comment.index', compact('comments', 'title'));
@@ -98,7 +98,7 @@ class CommentPostController extends Controller
             $comment->status = 1;
             $comment->save();
             Comment::query()->create([
-                'author_id' => 1,
+                'author_id' => auth()->id(),
                 'parent_id' => $comment->id,
                 'commentable_id' => $comment->commentable_id,
                 'commentable_type' => $comment->commentable_type,

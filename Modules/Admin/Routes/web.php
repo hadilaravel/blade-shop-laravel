@@ -7,6 +7,9 @@ use Modules\Admin\Http\Controllers\Blog\LabelController;
 use Modules\Admin\Http\Controllers\Blog\CommentPostController;
 use Modules\Admin\Http\Controllers\Ticket\TicketCategoryController;
 use Modules\Admin\Http\Controllers\Ticket\TicketController;
+use Modules\Admin\Http\Controllers\Shop\ProductCategoryController;
+use Modules\Admin\Http\Controllers\Shop\BrandController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,36 @@ use Modules\Admin\Http\Controllers\Ticket\TicketController;
 Route::prefix('admin')->group(function (){
 
     Route::get('/' , [\Modules\Admin\Http\Controllers\AdminController::class , 'index' ])->name('admin.index');
+
+
+    Route::prefix('shop')->group(function (){
+
+        //        category product
+        Route::prefix('category')->group(function () {
+            Route::get('/', [ProductCategoryController::class, 'index'])->name('admin.shop.category.index');
+            Route::get('create', [ProductCategoryController::class, 'create'])->name('admin.shop.category.create');
+            Route::post('store', [ProductCategoryController::class, 'store'])->name('admin.shop.category.store');
+            Route::get('edit/{productCategory}', [ProductCategoryController::class, 'edit'])->name('admin.shop.category.edit');
+            Route::put('update/{productCategory}', [ProductCategoryController::class, 'update'])->name('admin.shop.category.update');
+            Route::delete('destroy/{productCategory}', [ProductCategoryController::class, 'destroy'])->name('admin.shop.category.destroy');
+            Route::get('status/{productCategory}', [ProductCategoryController::class, 'status'])->name('admin.shop.category.status');
+        });
+
+        //        brand product
+        Route::prefix('brand')->group(function () {
+            Route::get('/', [BrandController::class, 'index'])->name('admin.shop.brand.index');
+            Route::get('create', [BrandController::class, 'create'])->name('admin.shop.brand.create');
+            Route::post('store', [BrandController::class, 'store'])->name('admin.shop.brand.store');
+            Route::get('edit/{brand}', [BrandController::class, 'edit'])->name('admin.shop.brand.edit');
+            Route::put('update/{brand}', [BrandController::class, 'update'])->name('admin.shop.brand.update');
+            Route::delete('destroy/{brand}', [BrandController::class, 'destroy'])->name('admin.shop.brand.destroy');
+            Route::get('status/{brand}', [BrandController::class, 'status'])->name('admin.shop.brand.status');
+        });
+
+
+
+    });
+
 
     Route::prefix('blog')->group(function (){
 
@@ -77,8 +110,11 @@ Route::prefix('admin')->group(function (){
 
         //        ticket
         Route::get('/', [TicketController::class, 'index'])->name('admin.ticket.index');
-        Route::get('/show/{ticket}', [CommentPostController::class, 'show'])->name('admin.blog.comment.show');
-        Route::post('/answer/{ticket}', [CommentPostController::class, 'answer'])->name('admin.blog.comment.answer');
+        Route::get('answered', [TicketController::class, 'answered'])->name('admin.ticket.answered');
+        Route::get('not-answer', [TicketController::class, 'notAnswer'])->name('admin.ticket.not-answer');
+        Route::get('answers/{ticket}', [TicketController::class, 'answers'])->name('admin.ticket.answers');
+        Route::get('/show/{ticket}', [TicketController::class, 'show'])->name('admin.ticket.show');
+        Route::post('/answer/{ticket}', [TicketController::class, 'answer'])->name('admin.ticket.answer');
         Route::delete('/destroy/{ticket}', [TicketController::class, 'destroy'])->name('admin.ticket.destroy');
         Route::get('/status/{ticket}', [TicketController::class, 'status'])->name('admin.ticket.status');
 

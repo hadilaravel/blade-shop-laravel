@@ -53590,3 +53590,7 @@ input[type='checkbox'].switch, input[type='radio'].switch {
 .outloneLi{
     outline: none !important;
 }
+
+.divCart{
+    border: 3px black solid;
+}

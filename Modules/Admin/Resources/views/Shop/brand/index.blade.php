@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('head-tag')
-<title>دسته بندی پست</title>
+<title> برند ها</title>
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@
 
     <div class="row">
         <div class="col-12">
-            <h2 class="content-header"> دسته بندی پست</h2>
+            <h2 class="content-header">     برند ها</h2>
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.blog.category.create') }}" class="btn btn-info btn-sm">ایجاد دسته بندی پست </a>
+                <a href="{{ route('admin.shop.brand.create') }}" class="btn btn-info btn-sm">ایجاد برند </a>
             </section>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title-wrap bar-success">
-                            <h4 class="card-title"> دسته بندی پست</h4>
+                            <h4 class="card-title">  برند ها</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -32,36 +32,35 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>نام</th>
-                                    <th>والد</th>
-                                    <th>وضعیت</th>
-                                    <th>تعداد زیر دسته ها</th>
+                                    <th>نام فارسی</th>
+                                    <th> نام اصلی</th>
+                                    <th>لوگو</th>
+                                    <th> وضعیت</th>
                                     <th>تاریخ ساخت</th>
                                     <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($categories as $key => $category)
+                                @foreach ($brands as $key => $brand)
                                     <tr>
                                         <th>{{ convertEnglishToPersian($key += 1) }}</th>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $brand->persian_name }}</td>
+                                        <td>{{ $brand->original_name }}</td>
                                         <td>
-                                            {{ $category->parent->name ?? '-'}}
+                                            <img src="{{ asset($brand->logo) }}" width="100px" height="100px">
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.blog.category.status', $category->id) }}" class="btn btn-{{ $category->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $category->status == 1 ? 'check' : 'window-close' }}"></i> </a>
+                                            <a href="{{ route('admin.shop.brand.status', $brand->id) }}" class="btn btn-{{ $brand->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $brand->status == 1 ? 'check' : 'window-close' }}"></i> </a>
                                         </td>
                                         <td>
-                                           {{ $category->children->count() !== 0 ? convertEnglishToPersian($category->children->count()) : '-' }}
+                                            {{ convertEnglishToPersian(jdate($brand->created_at)->format('Y-m-d')) }}
                                         </td>
+
                                         <td>
-                                            {{ convertEnglishToPersian(jdate($category->created_at)->format('Y-m-d')) }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.blog.category.edit', $category->id) }}" class="success p-0" data-original-title="" title="">
+                                            <a href="{{ route('admin.shop.brand.edit', $brand->id) }}" class="success p-0" data-original-title="" title="">
                                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
                                             </a>
-                                            <form class="d-inline " action="{{ route('admin.blog.category.destroy', $category->id) }}" method="post">
+                                            <form class="d-inline " action="{{ route('admin.shop.brand.destroy', $brand->id) }}" method="post">
                                                 @csrf
                                                 {{ method_field('delete') }}
                                                 <button class="danger p-0 border-0 bg-white outloneLi" data-original-title="" title="">
@@ -69,6 +68,7 @@
                                                 </button>
                                             </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
 
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                {{ $categories->links('pagination::bootstrap-4') }}
+                {{ $brands->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </section>

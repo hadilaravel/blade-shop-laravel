@@ -17,11 +17,23 @@
                 </li>
 
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                            بخش فروشگاه
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.category.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                          class="menu-title"> دسته بندی محصول</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                                  class="menu-title"> برند های محصول</span></a>
+                </li>
+
+
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش وبلاگ
                         </span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.blog.category.index') }}"><i class="icon-layers"></i><span data-i18n=""
-                                                                                                                    class="menu-title"> دسته بندی </span></a>
+                                                                                                                    class="menu-title"> دسته بندی پست</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.blog.post.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                           class="menu-title"> پست ها </span></a>
@@ -51,11 +63,11 @@
                 <li  class="has-sub nav-item"><a ><i class="fa fa-ticket"></i><span data-i18n=""
                                                                                            class="menu-title"> تیکت ها</span></a>
                     <ul class="menu-content">
-                        <li><a href="{{ route('admin.blog.comment.index') }}" class="menu-item"> تمام تیکت ها </a>
+                        <li><a href="{{ route('admin.ticket.index') }}" class="menu-item"> تمام تیکت ها </a>
                         </li>
-                        <li><a href="{{ route('admin.blog.comment.answered') }}" class="menu-item">  تیک های پاسخ داده شده</a>
+                        <li><a href="{{ route('admin.ticket.answered') }}" class="menu-item">  تیک های پاسخ داده شده</a>
                         </li>
-                        <li><a href="{{ route('admin.blog.comment.not-answer') }}" class="menu-item">  تیکت های پاسخ داده نشده</a>
+                        <li><a href="{{ route('admin.ticket.not-answer') }}" class="menu-item">  تیکت های پاسخ داده نشده</a>
                         </li>
                     </ul>
                 </li>

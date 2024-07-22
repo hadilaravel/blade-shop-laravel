@@ -44,8 +44,8 @@
                                         <label class="col-md-3 label-control" for="projectinput6">  وضعیت: </label>
                                         <div class="col-md-9">
                                             <select id="projectinput6" name="status" class="form-control">
-                                                <option value="0" @if(old('status' , $ticketCategory->stauts) == 0) selected @endif>غیرفعال</option>
-                                                <option value="1" @if(old('status' , $ticketCategory->stauts) == 1) selected @endif>فعال</option>
+                                                <option value="0" @if(old('status' , $ticketCategory->status) == 0) selected @endif>غیرفعال</option>
+                                                <option value="1" @if(old('status' , $ticketCategory->status) == 1) selected @endif>فعال</option>
                                             </select>
                                             @error('status')
                                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
