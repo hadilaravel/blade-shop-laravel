@@ -49,6 +49,13 @@ function convertArabicToEnglish($number)
     return $number;
 }
 
+function priceFormat($price)
+{
+    $price = number_format($price, 0, '/', '،');
+    $price = convertEnglishToPersian($price);
+    return $price;
+}
+
 function persianSlug ($string , $separator = '-')
 {
     $_transliteration = array(

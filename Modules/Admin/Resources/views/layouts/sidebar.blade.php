@@ -26,6 +26,9 @@
                 <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                   class="menu-title"> برند های محصول</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.product.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                               class="menu-title">محصولات</span></a>
+                </li>
 
 
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">

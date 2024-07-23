@@ -9,6 +9,7 @@ use Modules\Admin\Http\Controllers\Ticket\TicketCategoryController;
 use Modules\Admin\Http\Controllers\Ticket\TicketController;
 use Modules\Admin\Http\Controllers\Shop\ProductCategoryController;
 use Modules\Admin\Http\Controllers\Shop\BrandController;
+use Modules\Admin\Http\Controllers\Shop\ProductController;
 
 
 /*
@@ -51,6 +52,20 @@ Route::prefix('admin')->group(function (){
             Route::get('status/{brand}', [BrandController::class, 'status'])->name('admin.shop.brand.status');
         });
 
+        //        product
+        Route::prefix('product')->group(function () {
+            Route::get('/', [ProductController::class, 'index'])->name('admin.shop.product.index');
+            Route::get('create', [ProductController::class, 'create'])->name('admin.shop.product.create');
+            Route::post('store', [ProductController::class, 'store'])->name('admin.shop.product.store');
+            Route::get('edit/{product}', [ProductController::class, 'edit'])->name('admin.shop.product.edit');
+            Route::put('update/{product}', [ProductController::class, 'update'])->name('admin.shop.product.update');
+            Route::delete('destroy/{product}', [ProductController::class, 'destroy'])->name('admin.shop.product.destroy');
+            Route::get('status/{product}', [ProductController::class, 'status'])->name('admin.shop.product.status');
+
+
+
+
+        });
 
 
     });
