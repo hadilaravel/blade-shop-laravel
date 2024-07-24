@@ -42,6 +42,27 @@ class ProductController extends Controller
     }
 
 
+    public function edit(Product $product)
+    {
+        $categories = ProductCategory::query()->where('status' , 1)->get();
+        $brands = Brand::query()->where('status' , 1)->get();
+        return view('admin::shop.product.edit' , compact('categories' , 'brands' , 'product'));
+    }
+
+    public function update(ProductRequest $request , Product $product)
+    {
+        $inputs = $request->all();
+        $inputs['slug'] = persianSlug($request->name);
+        if($request->hasFile('image')) {
+            ShareService::deleteFilePublic($product->image);
+            $imageName = ShareService::uploadFilePublic($request->file('image') ,'image/shop/product');
+            $inputs['image'] = $imageName;
+        }
+        $product->update($inputs);
+        alert()->success('عملیات با موفقیت انجام شد');
+        return to_route('admin.shop.product.index');
+    }
+
     public function destroy(Product $product)
     {
         ShareService::deleteFilePublic($product->image);

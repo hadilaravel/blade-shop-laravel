@@ -10,6 +10,9 @@ use Modules\Admin\Http\Controllers\Ticket\TicketController;
 use Modules\Admin\Http\Controllers\Shop\ProductCategoryController;
 use Modules\Admin\Http\Controllers\Shop\BrandController;
 use Modules\Admin\Http\Controllers\Shop\ProductController;
+use Modules\Admin\Http\Controllers\Shop\ProductColorController;
+use Modules\Admin\Http\Controllers\Shop\ProductGalleryController;
+
 
 
 /*
@@ -63,7 +66,21 @@ Route::prefix('admin')->group(function (){
             Route::get('status/{product}', [ProductController::class, 'status'])->name('admin.shop.product.status');
 
 
+          //        color product
+            Route::prefix('color')->group(function () {
+              Route::get('/{product}', [ProductColorController::class, 'index'])->name('admin.shop.product.color.index');
+              Route::get('create/{product}', [ProductColorController::class, 'create'])->name('admin.shop.product.color.create');
+              Route::post('store/{product}', [ProductColorController::class, 'store'])->name('admin.shop.product.color.store');
+              Route::delete('destroy/{productColor}/{product}', [ProductColorController::class, 'destroy'])->name('admin.shop.product.color.destroy');
+            });
 
+            //       gallery  product
+            Route::prefix('gallery')->group(function () {
+                Route::get('/{product}', [ProductGalleryController::class, 'index'])->name('admin.shop.product.gallery.index');
+                Route::get('create/{product}', [ProductGalleryController::class, 'create'])->name('admin.shop.product.gallery.create');
+                Route::post('store/{product}', [ProductGalleryController::class, 'store'])->name('admin.shop.product.gallery.store');
+                Route::delete('destroy/{productImage}/{product}', [ProductGalleryController::class, 'destroy'])->name('admin.shop.product.gallery.destroy');
+            });
 
         });
 

@@ -39541,11 +39541,11 @@ input:focus ~ .bg-blue-grey {
 }
 
 .btn-shades.btn-black {
-  border-color : !important;
+    border-color : !important;
   background-color : #000000 !important;
 }
 .btn-shades.btn-black:hover {
-  border-color : !important;
+    border-color : !important;
   background-color : !important;
 }
 .btn-shades.btn-black:focus, .btn-shades.btn-black:active {
@@ -53593,4 +53593,16 @@ input[type='checkbox'].switch, input[type='radio'].switch {
 
 .divCart{
     border: 3px black solid;
+}
+
+.pColor{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+.tdColor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

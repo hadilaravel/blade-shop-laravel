@@ -194,6 +194,7 @@ return [
         'national_code' => 'کد ملی',
         'province_id' => 'استان',
         'city_id' => 'شهر',
+        'sold_number' => 'تعداد موجود در انبار' ,
         'no' => 'پلاک',
         'recipient_first_name' => 'نام گیرنده',
         'recipient_last_name' => 'نام خانوادگی گیرنده',

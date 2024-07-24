@@ -69,9 +69,11 @@
                                                     <i class="fa fa-tools"></i> امکانات محصول
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-secondary"><i class="fa fa-eye "></i>رنگ ها</a>
-                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-secondary"><i class="fa fa-eye "></i>گالری</a>
-                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-secondary"><i class="fa fa-eye "></i>گارانتی ها</a>
+                                                    <a href="{{ route('admin.shop.product.color.index', $product->id) }}" class="dropdown-item text-right text-white bg-info"><i class="fa fa-pencil-square "></i>  رنگ ها</a>
+                                                    <a href="{{ route('admin.shop.product.gallery.index', $product->id) }}" class="dropdown-item text-right text-white bg-info"><i class="fa fa-image "></i>  گالری </a>
+                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-info"><i class="fa fa-certificate "></i>  گارانتی ها </a>
+                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-info"><i class="fa fa-tags "></i>  برچسب ها </a>
+                                                    <a href="{{ route('admin.shop.product.edit', $product->id) }}" class="dropdown-item text-right text-white bg-info"><i class="icon-layers"></i>  ویژگی ها </a>
                                                 </div>
                                             </div>
                                         </td>
