@@ -232,6 +232,8 @@ return [
         'meta_description' => 'متا توضیحات',
         'commentable' => 'وضعیت نظر',
         'post_id' => 'پست',
+        'meta_key' => 'ویژگی',
+        'meta_value' => 'مقدار',
     ],
 
     'permission categories' => 'دسترسی به دسته بندی ها'

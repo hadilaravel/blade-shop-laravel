@@ -12,6 +12,8 @@ use Modules\Admin\Http\Controllers\Shop\BrandController;
 use Modules\Admin\Http\Controllers\Shop\ProductController;
 use Modules\Admin\Http\Controllers\Shop\ProductColorController;
 use Modules\Admin\Http\Controllers\Shop\ProductGalleryController;
+use Modules\Admin\Http\Controllers\Shop\GuaranteeController;
+use Modules\Admin\Http\Controllers\Shop\ProductMetaController;
 
 
 
@@ -81,6 +83,23 @@ Route::prefix('admin')->group(function (){
                 Route::post('store/{product}', [ProductGalleryController::class, 'store'])->name('admin.shop.product.gallery.store');
                 Route::delete('destroy/{productImage}/{product}', [ProductGalleryController::class, 'destroy'])->name('admin.shop.product.gallery.destroy');
             });
+
+            //       guarantee  product
+            Route::prefix('guarantee')->group(function () {
+                Route::get('/{product}', [GuaranteeController::class, 'index'])->name('admin.shop.product.guarantee.index');
+                Route::get('create/{product}', [GuaranteeController::class, 'create'])->name('admin.shop.product.guarantee.create');
+                Route::post('store/{product}', [GuaranteeController::class, 'store'])->name('admin.shop.product.guarantee.store');
+                Route::delete('destroy/{guarantee}/{product}', [GuaranteeController::class, 'destroy'])->name('admin.shop.product.guarantee.destroy');
+            });
+
+            //       metas  product
+            Route::prefix('meta')->group(function () {
+                Route::get('/{product}', [ProductMetaController::class, 'index'])->name('admin.shop.product.meta.index');
+                Route::get('create/{product}', [ProductMetaController::class, 'create'])->name('admin.shop.product.meta.create');
+                Route::post('store/{product}', [ProductMetaController::class, 'store'])->name('admin.shop.product.meta.store');
+                Route::delete('destroy/{productMeta}/{product}', [ProductMetaController::class, 'destroy'])->name('admin.shop.product.meta.destroy');
+            });
+
 
         });
 

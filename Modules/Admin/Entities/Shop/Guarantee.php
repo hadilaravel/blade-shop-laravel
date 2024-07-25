@@ -9,7 +9,7 @@ class Guarantee extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name' ,'product_id' ,'price_increase' ,'status'];
+    protected $fillable = ['name' ,'product_id' ,'price_increase' ];
 
     public function product()
     {

@@ -48,4 +48,15 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    public function guarantees()
+    {
+        return $this->hasMany(Guarantee::class);
+    }
+
+    public function metas()
+    {
+        return $this->hasMany(ProductMeta::class);
+    }
+
+
 }

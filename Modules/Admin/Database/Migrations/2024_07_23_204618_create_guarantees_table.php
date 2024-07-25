@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('price_increase', 20, 3)->default(0);
-            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
