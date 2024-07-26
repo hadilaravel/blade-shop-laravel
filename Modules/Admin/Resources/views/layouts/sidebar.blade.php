@@ -29,7 +29,34 @@
                 <li class=" nav-item"><a href="{{ route('admin.shop.product.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                class="menu-title">محصولات</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.storeroom.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                                 class="menu-title">انبار</span></a>
+                </li>
+                <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                   class="menu-title"> نظرات</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item"> تمام نظرات </a>
+                        </li>
+                        <li><a href="{{ route('admin.shop.comment.answered') }}" class="menu-item">  نظرات پاسخ داده شده</a>
+                        </li>
+                        <li><a href="{{ route('admin.shop.comment.not-answer') }}" class="menu-item">  نظرات پاسخ داده نشده</a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                            بخش تخفیف ها
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.category.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                                                                                                                                  class="menu-title">کوپن تخفیف</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                                                                                                                               class="menu-title">تخفیف عمومی</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                                                                                                                         class="menu-title">تخفیفات شگفت انگیز</span></a>
+                </li>
 
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش وبلاگ
@@ -43,6 +70,9 @@
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.blog.label.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title"> برچسب ها </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.blog.faq.index') }}"><i class="icon-layers"></i><span data-i18n=""
+                                                                                                                      class="menu-title">سوالات متداول</span></a>
                 </li>
                 <li  class="has-sub nav-item"><a ><i class="icon-layers"></i><span data-i18n=""
                                                                                           class="menu-title"> نظرات</span></a>

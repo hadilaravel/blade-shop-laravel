@@ -14,6 +14,10 @@ use Modules\Admin\Http\Controllers\Shop\ProductColorController;
 use Modules\Admin\Http\Controllers\Shop\ProductGalleryController;
 use Modules\Admin\Http\Controllers\Shop\GuaranteeController;
 use Modules\Admin\Http\Controllers\Shop\ProductMetaController;
+use Modules\Admin\Http\Controllers\Shop\FaqController;
+use Modules\Admin\Http\Controllers\Shop\StoreRoomController;
+use Modules\Admin\Http\Controllers\Shop\CommentProductController;
+
 
 
 
@@ -55,6 +59,27 @@ Route::prefix('admin')->group(function (){
             Route::put('update/{brand}', [BrandController::class, 'update'])->name('admin.shop.brand.update');
             Route::delete('destroy/{brand}', [BrandController::class, 'destroy'])->name('admin.shop.brand.destroy');
             Route::get('status/{brand}', [BrandController::class, 'status'])->name('admin.shop.brand.status');
+        });
+
+        //        storeroom product
+        Route::prefix('storeroom')->group(function () {
+            Route::get('/', [StoreRoomController::class, 'index'])->name('admin.shop.storeroom.index');
+            Route::get('add-to-store/{product}', [StoreRoomController::class, 'add'])->name('admin.shop.storeroom.add-to-store');
+            Route::post('store/{product}', [StoreRoomController::class, 'store'])->name('admin.shop.storeroom.store');
+            Route::get('edit/{product}', [StoreRoomController::class, 'edit'])->name('admin.shop.storeroom.edit');
+            Route::put('update/{product}', [StoreRoomController::class, 'update'])->name('admin.shop.storeroom.update');
+        });
+
+        //comment
+        Route::prefix('comment')->group(function () {
+            Route::get('/', [CommentProductController::class, 'index'])->name('admin.shop.comment.index');
+            Route::get('answered', [CommentProductController::class, 'answered'])->name('admin.shop.comment.answered');
+            Route::get('not-answer', [CommentProductController::class, 'notAnswer'])->name('admin.shop.comment.not-answer');
+            Route::get('answers/{comment}', [CommentProductController::class, 'answers'])->name('admin.shop.comment.answers');
+            Route::get('/show/{comment}', [CommentProductController::class, 'show'])->name('admin.shop.comment.show');
+            Route::delete('/destroy/{comment}', [CommentProductController::class, 'destroy'])->name('admin.shop.comment.destroy');
+            Route::get('/status/{comment}', [CommentProductController::class, 'status'])->name('admin.shop.comment.status');
+            Route::post('/answer/{comment}', [CommentProductController::class, 'answer'])->name('admin.shop.comment.answer');
         });
 
         //        product
@@ -100,7 +125,6 @@ Route::prefix('admin')->group(function (){
                 Route::delete('destroy/{productMeta}/{product}', [ProductMetaController::class, 'destroy'])->name('admin.shop.product.meta.destroy');
             });
 
-
         });
 
 
@@ -140,6 +164,17 @@ Route::prefix('admin')->group(function (){
             Route::put('update/{label}', [LabelController::class, 'update'])->name('admin.blog.label.update');
             Route::delete('destroy/{label}', [LabelController::class, 'destroy'])->name('admin.blog.label.destroy');
             Route::get('status/{label}', [LabelController::class, 'status'])->name('admin.blog.label.status');
+        });
+
+        //         faq
+        Route::prefix('faq')->group(function () {
+            Route::get('/', [FaqController::class, 'index'])->name('admin.blog.faq.index');
+            Route::get('create', [FaqController::class, 'create'])->name('admin.blog.faq.create');
+            Route::post('store', [FaqController::class, 'store'])->name('admin.blog.faq.store');
+            Route::get('edit/{faq}', [FaqController::class, 'edit'])->name('admin.blog.faq.edit');
+            Route::put('update/{faq}', [FaqController::class, 'update'])->name('admin.blog.faq.update');
+            Route::delete('destroy/{faq}', [FaqController::class, 'destroy'])->name('admin.blog.faq.destroy');
+            Route::get('status/{faq}', [FaqController::class, 'status'])->name('admin.blog.faq.status');
         });
 
         //comment
