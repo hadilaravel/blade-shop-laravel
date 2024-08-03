@@ -17,6 +17,9 @@ use Modules\Admin\Http\Controllers\Shop\ProductMetaController;
 use Modules\Admin\Http\Controllers\Shop\FaqController;
 use Modules\Admin\Http\Controllers\Shop\StoreRoomController;
 use Modules\Admin\Http\Controllers\Shop\CommentProductController;
+use Modules\Admin\Http\Controllers\Shop\CopanController;
+use Modules\Admin\Http\Controllers\Shop\CommonDiscountController;
+use Modules\Admin\Http\Controllers\Shop\AmazingSaleController;
 
 
 
@@ -130,8 +133,46 @@ Route::prefix('admin')->group(function (){
 
     });
 
+//     discount
+      Route::prefix('discount')->group(function (){
 
-    Route::prefix('blog')->group(function (){
+//        copan
+          Route::prefix('copan')->group(function () {
+              Route::get('/', [CopanController::class, 'index'])->name('admin.discount.copan.index');
+              Route::get('create', [CopanController::class, 'create'])->name('admin.discount.copan.create');
+              Route::post('store', [CopanController::class, 'store'])->name('admin.discount.copan.store');
+              Route::get('edit/{copan}', [CopanController::class, 'edit'])->name('admin.discount.copan.edit');
+              Route::put('update/{copan}', [CopanController::class, 'update'])->name('admin.discount.copan.update');
+              Route::delete('destroy/{copan}', [CopanController::class, 'destroy'])->name('admin.discount.copan.destroy');
+              Route::get('status/{copan}', [CopanController::class, 'status'])->name('admin.discount.copan.status');
+          });
+
+          //        commonDiscount
+          Route::prefix('common')->group(function () {
+              Route::get('/', [CommonDiscountController::class, 'index'])->name('admin.discount.common.index');
+              Route::get('create', [CommonDiscountController::class, 'create'])->name('admin.discount.common.create');
+              Route::post('store', [CommonDiscountController::class, 'store'])->name('admin.discount.common.store');
+              Route::get('edit/{commonDiscount}', [CommonDiscountController::class, 'edit'])->name('admin.discount.common.edit');
+              Route::put('update/{commonDiscount}', [CommonDiscountController::class, 'update'])->name('admin.discount.common.update');
+              Route::delete('destroy/{commonDiscount}', [CommonDiscountController::class, 'destroy'])->name('admin.discount.common.destroy');
+              Route::get('status/{commonDiscount}', [CommonDiscountController::class, 'status'])->name('admin.discount.common.status');
+          });
+
+          //        amazing sale
+          Route::prefix('amazing-sale')->group(function () {
+              Route::get('/', [AmazingSaleController::class, 'index'])->name('admin.discount.amazing.index');
+              Route::get('create', [AmazingSaleController::class, 'create'])->name('admin.discount.amazing.create');
+              Route::post('store', [AmazingSaleController::class, 'store'])->name('admin.discount.amazing.store');
+              Route::get('edit/{amazingSale}', [AmazingSaleController::class, 'edit'])->name('admin.discount.amazing.edit');
+              Route::put('update/{amazingSale}', [AmazingSaleController::class, 'update'])->name('admin.discount.amazing.update');
+              Route::delete('destroy/{amazingSale}', [AmazingSaleController::class, 'destroy'])->name('admin.discount.amazing.destroy');
+              Route::get('status/{amazingSale}', [AmazingSaleController::class, 'status'])->name('admin.discount.amazing.status');
+          });
+
+      });
+
+
+        Route::prefix('blog')->group(function (){
 
 //        category post
         Route::prefix('category')->group(function () {

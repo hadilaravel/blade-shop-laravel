@@ -48,13 +48,13 @@
                             بخش تخفیف ها
                         </span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.shop.category.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                <li class=" nav-item"><a href="{{ route('admin.discount.copan.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
                                                                                                                                   class="menu-title">کوپن تخفیف</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                <li class=" nav-item"><a href="{{ route('admin.discount.common.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
                                                                                                                                class="menu-title">تخفیف عمومی</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
+                <li class=" nav-item"><a href="{{ route('admin.discount.amazing.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
                                                                                                                          class="menu-title">تخفیفات شگفت انگیز</span></a>
                 </li>
 
