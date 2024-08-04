@@ -20,6 +20,9 @@ use Modules\Admin\Http\Controllers\Shop\CommentProductController;
 use Modules\Admin\Http\Controllers\Shop\CopanController;
 use Modules\Admin\Http\Controllers\Shop\CommonDiscountController;
 use Modules\Admin\Http\Controllers\Shop\AmazingSaleController;
+use Modules\Admin\Http\Controllers\Shop\DeliveryController;
+use Modules\Admin\Http\Controllers\Shop\PaymentController;
+
 
 
 
@@ -51,6 +54,28 @@ Route::prefix('admin')->group(function (){
             Route::put('update/{productCategory}', [ProductCategoryController::class, 'update'])->name('admin.shop.category.update');
             Route::delete('destroy/{productCategory}', [ProductCategoryController::class, 'destroy'])->name('admin.shop.category.destroy');
             Route::get('status/{productCategory}', [ProductCategoryController::class, 'status'])->name('admin.shop.category.status');
+        });
+
+        //payment
+        Route::prefix('payment')->group(function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('admin.shop.payment.index');
+            Route::get('online', [PaymentController::class, 'online'])->name('admin.shop.payment.online');
+            Route::get('show/{payment}', [PaymentController::class, 'show'])->name('admin.shop.payment.show');
+            Route::get('offline', [PaymentController::class, 'offline'])->name('admin.shop.payment.offline');
+            Route::get('cash', [PaymentController::class, 'cash'])->name('admin.shop.payment.cash');
+            Route::get('canceled/{payment}', [PaymentController::class, 'canceled'])->name('admin.shop.payment.canceled');
+            Route::get('returned/{payment}', [PaymentController::class, 'returned'])->name('admin.shop.payment.returned');
+        });
+
+        //        delivery
+        Route::prefix('delivery')->group(function () {
+            Route::get('/', [DeliveryController::class, 'index'])->name('admin.shop.delivery.index');
+            Route::get('create', [DeliveryController::class, 'create'])->name('admin.shop.delivery.create');
+            Route::post('store', [DeliveryController::class, 'store'])->name('admin.shop.delivery.store');
+            Route::get('edit/{delivery}', [DeliveryController::class, 'edit'])->name('admin.shop.delivery.edit');
+            Route::put('update/{delivery}', [DeliveryController::class, 'update'])->name('admin.shop.delivery.update');
+            Route::delete('destroy/{delivery}', [DeliveryController::class, 'destroy'])->name('admin.shop.delivery.destroy');
+            Route::get('status/{delivery}', [DeliveryController::class, 'status'])->name('admin.shop.delivery.status');
         });
 
         //        brand product

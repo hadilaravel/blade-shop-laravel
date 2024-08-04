@@ -32,6 +32,29 @@
                 <li class=" nav-item"><a href="{{ route('admin.shop.storeroom.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                  class="menu-title">انبار</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('admin.shop.delivery.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                                   class="menu-title">روش های ارسال</span></a>
+                </li>
+                <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                           class="menu-title"> پرداخت ها</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.shop.payment.index') }}" class="menu-item">تمام پرداخت ها</a></li>
+                        <li><a href="{{ route('admin.shop.payment.online') }}" class="menu-item"> پرداخت های آنلاین</a></li>
+                        <li><a href="{{ route('admin.shop.payment.offline') }}" class="menu-item">پرداخت های آفلاین</a></li>
+                        <li><a href="{{ route('admin.shop.payment.cash') }}" class="menu-item">پرداخت در محل</a></li>
+                    </ul>
+                </li>
+                <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                           class="menu-title"> سفارشات</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">جدید</a></li>
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">در حال ارسال</a></li>
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">پرداخت نشده</a></li>
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">باطل شده</a></li>
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">مرجوعی</a></li>
+                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">تمام سفارشات</a></li>
+                    </ul>
+                </li>
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                    class="menu-title"> نظرات</span></a>
                     <ul class="menu-content">
