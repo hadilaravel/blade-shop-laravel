@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'user_type',
         'activation',
+        'username',
         'status',
         'profile',
         'email_verified_at',

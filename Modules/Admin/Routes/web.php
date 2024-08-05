@@ -22,6 +22,9 @@ use Modules\Admin\Http\Controllers\Shop\CommonDiscountController;
 use Modules\Admin\Http\Controllers\Shop\AmazingSaleController;
 use Modules\Admin\Http\Controllers\Shop\DeliveryController;
 use Modules\Admin\Http\Controllers\Shop\PaymentController;
+use Modules\Admin\Http\Controllers\Shop\OrderController;
+use Modules\Admin\Http\Controllers\User\CustomerController;
+use Modules\Admin\Http\Controllers\User\AdminLoginController;
 
 
 
@@ -38,12 +41,40 @@ use Modules\Admin\Http\Controllers\Shop\PaymentController;
 |
 */
 
-Route::prefix('admin')->group(function (){
+Route::middleware('auth')->prefix('admin')->group(function (){
 
     Route::get('/' , [\Modules\Admin\Http\Controllers\AdminController::class , 'index' ])->name('admin.index');
 
 
+    Route::prefix('user')->group(function (){
+
+        //customer
+         Route::prefix('customer')->group(function () {
+              Route::get('/', [CustomerController::class, 'index'])->name('admin.user.customer.index');
+              Route::get('/activation/{user}', [CustomerController::class, 'activation'])->name('admin.user.customer.activation');
+         });
+
+        Route::get('logout' , [AdminLoginController::class , 'logout'])->name('logout');
+
+
+    });
+
     Route::prefix('shop')->group(function (){
+
+        //order
+        Route::prefix('order')->group(function () {
+            Route::get('/', [OrderController::class, 'all'])->name('admin.shop.order.all');
+            Route::get('/new-order', [OrderController::class, 'newOrders'])->name('admin.shop.order.newOrders');
+            Route::get('/sending', [OrderController::class, 'sending'])->name('admin.shop.order.sending');
+            Route::get('/unpaid', [OrderController::class, 'unpaid'])->name('admin.shop.order.unpaid');
+            Route::get('/canceled', [OrderController::class, 'canceled'])->name('admin.shop.order.canceled');
+            Route::get('/returned', [OrderController::class, 'returned'])->name('admin.shop.order.returned');
+            Route::get('/show/{order}', [OrderController::class, 'show'])->name('admin.shop.order.show');
+            Route::get('/show/{order}/detail', [OrderController::class, 'detail'])->name('admin.shop.order.show.detail');
+            Route::get('/change-send-status/{order}', [OrderController::class, 'changeSendStatus'])->name('admin.shop.order.changeSendStatus');
+            Route::get('/change-order-status/{order}', [OrderController::class, 'changeOrderStatus'])->name('admin.shop.order.changeOrderStatus');
+            Route::get('/cancel-order/{order}', [OrderController::class, 'cancelOrder'])->name('admin.shop.order.cancelOrder');
+        });
 
         //        category product
         Route::prefix('category')->group(function () {
@@ -286,4 +317,10 @@ Route::prefix('admin')->group(function (){
     });
 
 
+});
+
+
+Route::prefix('admin-login')->group(function (){
+    Route::get('/' , [AdminLoginController::class , 'show'])->name('admin.admin-login.show');
+    Route::post('store' , [AdminLoginController::class , 'store'])->name('admin.admin-login.store');
 });

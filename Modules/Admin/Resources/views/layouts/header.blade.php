@@ -16,12 +16,13 @@
                     <li class="dropdown nav-item mr-0"><a id="dropdownBasic3" href="#" data-toggle="dropdown"
                                                           class="nav-link position-relative dropdown-user-link dropdown-toggle"><span
                                 class="avatar avatar-online"><img id="navbar-avatar"
-                                                                  src="" alt="avatar" /></span>
+                                                                  src="{{ asset(auth()->user()->profile) }}" alt="avatar" /></span>
                             <p class="d-none">تنظیمات کاربر</p>
                         </a>
                         <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-left">
                             <div class="arrow_box_right">
-                                <a href="" class="dropdown-item"><i class="ft-power ml-2"></i>
+                                <a href="{{ route('logout') }}" class="dropdown-item  d-flex justify-content-between align-items-center">
+                                    <i class="fa fa-sign-out" style="font-size: 20px"></i>
                                     <span>خروج</span>
                                 </a>
                             </div>

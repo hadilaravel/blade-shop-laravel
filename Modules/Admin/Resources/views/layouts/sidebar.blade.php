@@ -47,12 +47,12 @@
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                            class="menu-title"> سفارشات</span></a>
                     <ul class="menu-content">
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">جدید</a></li>
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">در حال ارسال</a></li>
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">پرداخت نشده</a></li>
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">باطل شده</a></li>
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">مرجوعی</a></li>
-                        <li><a href="{{ route('admin.shop.comment.index') }}" class="menu-item">تمام سفارشات</a></li>
+                        <li><a href="{{ route('admin.shop.order.newOrders') }}" class="menu-item">جدید</a></li>
+                        <li><a href="{{ route('admin.shop.order.sending') }}" class="menu-item">در حال ارسال</a></li>
+                        <li><a href="{{ route('admin.shop.order.unpaid') }}" class="menu-item">پرداخت نشده</a></li>
+                        <li><a href="{{ route('admin.shop.order.canceled') }}" class="menu-item">باطل شده</a></li>
+                        <li><a href="{{ route('admin.shop.order.returned') }}" class="menu-item">مرجوعی</a></li>
+                        <li><a href="{{ route('admin.shop.order.all') }}" class="menu-item">تمام سفارشات</a></li>
                     </ul>
                 </li>
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
@@ -65,6 +65,25 @@
                         <li><a href="{{ route('admin.shop.comment.not-answer') }}" class="menu-item">  نظرات پاسخ داده نشده</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                            بخش کاربران
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.discount.copan.index') }}"><i class="fa fa-user"></i><span data-i18n=""
+                                                                                                                             class="menu-title">کاربران ادمین</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.user.customer.index') }}"><i class="fa fa-user"></i><span data-i18n=""
+                                                                                                                              class="menu-title">مشتریان</span></a>
+                </li>
+
+                <li class="nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                            بخش سطوح دسترسی
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.discount.copan.index') }}"><i class="fa fa-lock"></i><span data-i18n=""
+                                                                                                                          class="menu-title">مدیریت نقش ها</span></a>
                 </li>
 
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
