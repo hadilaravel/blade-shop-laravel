@@ -12,6 +12,9 @@
         <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
 
+                <li class=" nav-item"><a href="{{ route('home.index') }}"><i class="fa fa-shopping-bag"></i><span data-i18n=""
+                                                                                                          class="menu-title">فروشگاه</span></a>
+                </li>
                 <li class=" nav-item"><a href="{{ route('admin.index') }}"><i class="icon-home"></i><span data-i18n=""
                                                                                             class="menu-title">داشبورد</span></a>
                 </li>
@@ -126,6 +129,17 @@
                         <li><a href="{{ route('admin.blog.comment.not-answer') }}" class="menu-item">  نظرات پاسخ داده نشده</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                           اطلاع رسانی
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.notify.email.index') }}"><i class="fa fa-bars"></i><span data-i18n=""
+                                                                                                                             class="menu-title">اعلامیه ایمیلی</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.notify.sms.index') }}"><i class="fa fa-bars"></i><span data-i18n=""
+                                                                                                                              class="menu-title">اعلامیه پیامکی</span></a>
                 </li>
 
                 <li class=" nav-item liClass" ><a ><span data-i18n="" class="menu-title spanish">

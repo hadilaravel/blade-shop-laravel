@@ -25,8 +25,8 @@ use Modules\Admin\Http\Controllers\Shop\PaymentController;
 use Modules\Admin\Http\Controllers\Shop\OrderController;
 use Modules\Admin\Http\Controllers\User\CustomerController;
 use Modules\Admin\Http\Controllers\User\AdminLoginController;
-
-
+use Modules\Admin\Http\Controllers\Notify\EmailController;
+use Modules\Admin\Http\Controllers\Notify\SmsController;
 
 
 
@@ -58,6 +58,35 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 
     });
+
+    Route::prefix('notify')->group(function (){
+
+          //   email
+            Route::prefix('email')->group(function () {
+                Route::get('/', [EmailController::class, 'index'])->name('admin.notify.email.index');
+                Route::get('/create', [EmailController::class, 'create'])->name('admin.notify.email.create');
+                Route::post('/store', [EmailController::class, 'store'])->name('admin.notify.email.store');
+                Route::get('/edit/{email}', [EmailController::class, 'edit'])->name('admin.notify.email.edit');
+                Route::put('/update/{email}', [EmailController::class, 'update'])->name('admin.notify.email.update');
+                Route::delete('/destroy/{email}', [EmailController::class, 'destroy'])->name('admin.notify.email.destroy');
+                Route::get('/status/{email}', [EmailController::class, 'status'])->name('admin.notify.email.status');
+                Route::get('/send-mail/{email}', [EmailController::class, 'sendMail'])->name('admin.notify.email.send-mail');
+            });
+
+        //  sms
+        Route::prefix('sms')->group(function () {
+            Route::get('/', [SmsController::class, 'index'])->name('admin.notify.sms.index');
+            Route::get('/create', [SmsController::class, 'create'])->name('admin.notify.sms.create');
+            Route::post('/store', [SmsController::class, 'store'])->name('admin.notify.sms.store');
+            Route::get('/edit/{sms}', [SmsController::class, 'edit'])->name('admin.notify.sms.edit');
+            Route::put('/update/{sms}', [SmsController::class, 'update'])->name('admin.notify.sms.update');
+            Route::delete('/destroy/{sms}', [SmsController::class, 'destroy'])->name('admin.notify.sms.destroy');
+            Route::get('/status/{sms}', [SmsController::class, 'status'])->name('admin.notify.sms.status');
+            Route::get('/send-sms/{sms}', [SmsController::class, 'sendSms'])->name('admin.notify.sms.send-sms');
+        });
+
+    });
+
 
     Route::prefix('shop')->group(function (){
 
