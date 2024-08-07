@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Config;
 use Melipayamak\MelipayamakApi;
 use Modules\Admin\Entities\Notify\Email;
 use Modules\Admin\Entities\Notify\Sms;
+use Modules\Admin\Entities\Setting\SmsSetting;
 
 class SendSmsToUser implements ShouldQueue
 {
@@ -28,21 +29,28 @@ class SendSmsToUser implements ShouldQueue
 
     public function handle()
     {
-        $users = User::query()->whereNotNull('mobile')->where('activation' , 1)->get();
-        foreach ($users as $user) {
-            try {
-                $username = Config::get('sms.username');
-                $password = Config::get('sms.password');
-                $api = new MelipayamakApi($username, $password);
-                $sms = $api->sms();
-                $to = '0' . $user->mobile;
-                $from = Config::get('sms.otp_from');
-                $text = $this->sms->body;
-                $response = $sms->send($to, $from, $text);
-                $json = json_decode($response);
-            } catch (\Exception $e) {
-                echo $e->getMessage();
+        $smsSetting = SmsSetting::query()->first();
+        if(!empty($smsSetting)) {
+            $users = User::query()->whereNotNull('mobile')->where('activation', 1)->get();
+            foreach ($users as $user) {
+                try {
+                    $username = $smsSetting->username;
+                    $password = $smsSetting->password;
+                    $api = new MelipayamakApi($username, $password);
+                    $sms = $api->sms();
+                    $to = '0' . $user->mobile;
+                    $from = $smsSetting->from;
+                    $text = $this->sms->body;
+                    $response = $sms->send($to, $from, $text);
+                    $json = json_decode($response);
+                } catch (\Exception $e) {
+                    alert()->error('لطفا تنظیمات مربوط به ارسال پیامک را انجام دهید');
+                    return to_route('admin.notify.sms.index');
+                }
             }
+        }else{
+            alert()->success('لطفا تنظیمات مربوط به ارسال پیامک را انجام دهید');
+            return to_route('admin.notify.sms.index');
         }
     }
 }

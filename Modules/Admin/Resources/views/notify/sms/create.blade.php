@@ -75,7 +75,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput5"> متن ایمیل: </label>
                                         <div class="col-md-9">
-                                            <textarea  type="text"  id="body" class="form-control form-control-sm" name="body" >
+                                            <textarea  type="text" class="form-control form-control-sm" name="body" >
                                                 {{ old('body') }}
                                             </textarea>
                                             @error('body')
@@ -109,11 +109,6 @@
 
     <script src="{{ asset('panel-assets/jalalidatepicker/persian-date.min.js') }}"></script>
     <script src="{{ asset('panel-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
-
-    <script src="{{ asset('panel-assets/ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace('body');
-    </script>
 
     <script>
         $(document).ready(function() {

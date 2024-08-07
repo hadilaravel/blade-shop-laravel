@@ -24,6 +24,11 @@
                     <div class="card-header">
                         <div class="card-title-wrap bar-success">
                             <h4 class="card-title">اطلاعیه پیامکی</h4>
+                            <p>برای  ارسال پیامک ابتدا باید در سایت
+                                <a href="https://login.melipayamak.com" target="-_blank" rel="nofollow">ملی پیامک</a>
+                                ثبت نام کرده و بعد در بخش تنظیمات ,
+                                <a href="{{ route('admin.setting.sms-setting.index') }}">تنظیمات ارسال پیامک</a>
+                                را انجام دهید و بعد اقدام کنید</p>
                         </div>
                     </div>
                     <div class="card-body">
@@ -45,7 +50,7 @@
                                     <tr>
                                         <th>{{ convertEnglishToPersian($key += 1) }}</th>
                                         <td>{{ $single->title }}</td>
-                                        <td>{!! \Illuminate\Support\Str::limit($single->body , 60) !!}</td>
+                                        <td>{{ \Illuminate\Support\Str::limit($single->body , 60) }}</td>
                                         <td>
                                             {{ convertEnglishToPersian(jdate($single->published_at)->format('Y-m-d')) }}
                                         </td>

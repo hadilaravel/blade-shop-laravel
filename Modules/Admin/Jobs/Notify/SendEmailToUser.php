@@ -35,7 +35,7 @@ class SendEmailToUser implements ShouldQueue
                 'body' => $this->email->body,
             ];
             $emailService->setDetails($details);
-            $emailService->setFrom('noreply@example.com', 'amazon');
+            $emailService->setFrom('noreply@example.com', 'shop');
             $emailService->setSubject($this->email->title);
             $emailService->setTo($user->email);
 

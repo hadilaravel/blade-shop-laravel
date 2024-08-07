@@ -27,7 +27,7 @@ use Modules\Admin\Http\Controllers\User\CustomerController;
 use Modules\Admin\Http\Controllers\User\AdminLoginController;
 use Modules\Admin\Http\Controllers\Notify\EmailController;
 use Modules\Admin\Http\Controllers\Notify\SmsController;
-
+use Modules\Admin\Http\Controllers\Setting\SmsSettingController;
 
 
 /*
@@ -340,6 +340,19 @@ Route::middleware('auth')->prefix('admin')->group(function (){
             Route::put('/update/{ticketCategory}', [TicketCategoryController::class, 'update'])->name('admin.ticket.category.update');
             Route::delete('/destroy/{ticketCategory}', [TicketCategoryController::class, 'destroy'])->name('admin.ticket.category.destroy');
             Route::get('/status/{ticketCategory}', [TicketCategoryController::class, 'status'])->name('admin.ticket.category.status');
+        });
+
+
+    });
+
+//    setting
+    Route::prefix('setting')->group(function (){
+
+        //      sms setting
+        Route::prefix('sms-setting')->group(function () {
+            Route::get('/', [SmsSettingController::class, 'index'])->name('admin.setting.sms-setting.index');
+            Route::get('edit/{smsSetting}', [SmsSettingController::class, 'edit'])->name('admin.setting.sms-setting.edit');
+            Route::put('update/{smsSetting}', [SmsSettingController::class, 'update'])->name('admin.setting.sms-setting.update');
         });
 
 

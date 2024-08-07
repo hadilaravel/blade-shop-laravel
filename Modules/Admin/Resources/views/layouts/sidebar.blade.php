@@ -136,10 +136,10 @@
                         </span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.notify.email.index') }}"><i class="fa fa-bars"></i><span data-i18n=""
-                                                                                                                             class="menu-title">اعلامیه ایمیلی</span></a>
+                                                                                                                             class="menu-title">اطلاعیه ایمیلی</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.notify.sms.index') }}"><i class="fa fa-bars"></i><span data-i18n=""
-                                                                                                                              class="menu-title">اعلامیه پیامکی</span></a>
+                                                                                                                              class="menu-title">اطلاعیه پیامکی</span></a>
                 </li>
 
                 <li class=" nav-item liClass" ><a ><span data-i18n="" class="menu-title spanish">
@@ -159,6 +159,20 @@
                         <li><a href="{{ route('admin.ticket.not-answer') }}" class="menu-item">  تیکت های پاسخ داده نشده</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                            بخش تنظیمات
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.discount.common.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
+                                                                                                                             class="menu-title">تنظیمات سایت</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.setting.sms-setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
+                                                                                                                              class="menu-title">تنظیمات ارسال پیامک</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.discount.amazing.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
+                                                                                                                               class="menu-title">تنظیمات ارسال ایمیل</span></a>
                 </li>
 
             </ul>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Modules\Admin\Entities\Access\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +24,19 @@ class DatabaseSeeder extends Seeder
            'status' => 1,
            'profile' => 'image/admin/admin.png'
        ]);
+
+
+        foreach (Permission::$permissions as $permission)
+        {
+            $permissionExists = Permission::query()->where('name' , $permission)->first();
+            if(empty($permissionExists)) {
+                Permission::query()->create([
+                    'name' => $permission,
+                ]);
+            }
+
+        }
+
+
     }
 }
