@@ -23,21 +23,37 @@
                             بخش فروشگاه
                         </span></a>
                 </li>
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.category.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                           class="menu-title"> دسته بندی محصول</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                   class="menu-title"> برند های محصول</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.product.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                class="menu-title">محصولات</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.storeroom.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                  class="menu-title">انبار</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.delivery.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                    class="menu-title">روش های ارسال</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                            class="menu-title"> پرداخت ها</span></a>
                     <ul class="menu-content">
@@ -47,6 +63,9 @@
                         <li><a href="{{ route('admin.shop.payment.cash') }}" class="menu-item">پرداخت در محل</a></li>
                     </ul>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                            class="menu-title"> سفارشات</span></a>
                     <ul class="menu-content">
@@ -58,6 +77,9 @@
                         <li><a href="{{ route('admin.shop.order.all') }}" class="menu-item">تمام سفارشات</a></li>
                     </ul>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                    class="menu-title"> نظرات</span></a>
                     <ul class="menu-content">
@@ -69,26 +91,35 @@
                         </li>
                     </ul>
                 </li>
+                @endpermission
 
                 <li class="nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش کاربران
                         </span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.discount.copan.index') }}"><i class="fa fa-user"></i><span data-i18n=""
+                @permission('PermissionCategoryProduct')
+                <li class=" nav-item"><a href="{{ route('admin.user-admin.index') }}"><i class="fa fa-user"></i><span data-i18n=""
                                                                                                                              class="menu-title">کاربران ادمین</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.user.customer.index') }}"><i class="fa fa-user"></i><span data-i18n=""
                                                                                                                               class="menu-title">مشتریان</span></a>
                 </li>
+                @endpermission
 
+                @permission('PermissionCategoryProduct')
                 <li class="nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش سطوح دسترسی
                         </span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.discount.copan.index') }}"><i class="fa fa-lock"></i><span data-i18n=""
+                <li class=" nav-item"><a href="{{ route('admin.role.index') }}"><i class="fa fa-lock"></i><span data-i18n=""
                                                                                                                           class="menu-title">مدیریت نقش ها</span></a>
                 </li>
+                @endpermission
 
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش تخفیف ها
                         </span></a>
@@ -102,23 +133,38 @@
                 <li class=" nav-item"><a href="{{ route('admin.discount.amazing.index') }}"><i class="fa fa-percent"></i><span data-i18n=""
                                                                                                                          class="menu-title">تخفیفات شگفت انگیز</span></a>
                 </li>
+                @endpermission
+
 
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش وبلاگ
                         </span></a>
                 </li>
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.blog.category.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                     class="menu-title"> دسته بندی پست</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.blog.post.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                           class="menu-title"> پست ها </span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.blog.label.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title"> برچسب ها </span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item"><a href="{{ route('admin.blog.faq.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title">سوالات متداول</span></a>
                 </li>
+                @endpermission
+
+                @permission('PermissionCategoryProduct')
                 <li  class="has-sub nav-item"><a ><i class="icon-layers"></i><span data-i18n=""
                                                                                           class="menu-title"> نظرات</span></a>
                     <ul class="menu-content">
@@ -130,7 +176,9 @@
                         </li>
                     </ul>
                 </li>
+                @endpermission
 
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                            اطلاع رسانی
                         </span></a>
@@ -141,7 +189,9 @@
                 <li class=" nav-item"><a href="{{ route('admin.notify.sms.index') }}"><i class="fa fa-bars"></i><span data-i18n=""
                                                                                                                               class="menu-title">اطلاعیه پیامکی</span></a>
                 </li>
+                @endpermission
 
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item liClass" ><a ><span data-i18n="" class="menu-title spanish">
                             بخش تیکت ها
                         </span></a>
@@ -160,7 +210,9 @@
                         </li>
                     </ul>
                 </li>
+                @endpermission
 
+                @permission('PermissionCategoryProduct')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش تنظیمات
                         </span></a>
@@ -174,6 +226,7 @@
                 <li class=" nav-item"><a href="{{ route('admin.discount.amazing.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
                                                                                                                                class="menu-title">تنظیمات ارسال ایمیل</span></a>
                 </li>
+                @endpermission
 
             </ul>
         </div>

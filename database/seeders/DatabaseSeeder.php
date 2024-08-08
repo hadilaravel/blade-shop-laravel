@@ -15,15 +15,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 //        admin
-       User::query()->create([
-           'name' => 'admin',
-           'username' => 'admin',
-           'password' => bcrypt('Admin@22'),
-           'user_type' => 1,
-           'activation' => 1,
-           'status' => 1,
-           'profile' => 'image/admin/admin.png'
-       ]);
+        $user = User::query()->where('username' , 'admin')->first();
+        if(empty($user)) {
+            User::query()->create([
+                'name' => 'admin',
+                'username' => 'admin',
+                'password' => bcrypt('Admin@22'),
+                'user_type' => 1,
+                'activation' => 1,
+                'status' => 1,
+                'profile' => 'image/admin/admin.png'
+            ]);
+        }
 
 
         foreach (Permission::$permissions as $permission)

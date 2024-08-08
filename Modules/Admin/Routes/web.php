@@ -28,6 +28,9 @@ use Modules\Admin\Http\Controllers\User\AdminLoginController;
 use Modules\Admin\Http\Controllers\Notify\EmailController;
 use Modules\Admin\Http\Controllers\Notify\SmsController;
 use Modules\Admin\Http\Controllers\Setting\SmsSettingController;
+use Modules\Admin\Http\Controllers\Access\RoleController;
+use Modules\Admin\Http\Controllers\User\UserAdminController;
+
 
 
 /*
@@ -41,7 +44,7 @@ use Modules\Admin\Http\Controllers\Setting\SmsSettingController;
 |
 */
 
-Route::middleware('auth')->prefix('admin')->group(function (){
+Route::middleware('auth.check')->prefix('admin')->group(function (){
 
     Route::get('/' , [\Modules\Admin\Http\Controllers\AdminController::class , 'index' ])->name('admin.index');
 
@@ -49,17 +52,30 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::prefix('user')->group(function (){
 
         //customer
-         Route::prefix('customer')->group(function () {
+         Route::middleware('permission:PermissionCustomer')->prefix('customer')->group(function () {
               Route::get('/', [CustomerController::class, 'index'])->name('admin.user.customer.index');
               Route::get('/activation/{user}', [CustomerController::class, 'activation'])->name('admin.user.customer.activation');
          });
+
+        Route::middleware('permission:PermissionUserAdmin')->prefix('user-admin')->group(function (){
+            Route::get('/' , [UserAdminController::class , 'index'])->name('admin.user-admin.index');
+            Route::get('create' , [UserAdminController::class , 'create'])->name('admin.user-admin.create');
+            Route::post('create/store' , [UserAdminController::class , 'store'])->name('admin.user-admin.store');
+            Route::get('edit/{user}' , [UserAdminController::class , 'edit'])->name('admin.user-admin.edit');
+            Route::put('update/{user}' , [UserAdminController::class , 'update'])->name('admin.user-admin.update');
+            Route::delete('destroy/{user}' , [UserAdminController::class , 'destroy'])->name('admin.user-admin.destroy');
+            Route::get('status/{user}' , [UserAdminController::class , 'status'])->name('admin.user-admin.status');
+            Route::get('role/{user}' , [UserAdminController::class , 'roleShow'])->name('admin.user-admin.role.show');
+            Route::post('role/{user}' , [UserAdminController::class , 'roleStore'])->name('admin.user-admin.role.store');
+            Route::get('role/{user}/{role}' , [UserAdminController::class , 'roleDelete'])->name('admin.user-admin.role.delete');
+        });
 
         Route::get('logout' , [AdminLoginController::class , 'logout'])->name('logout');
 
 
     });
 
-    Route::prefix('notify')->group(function (){
+    Route::middleware('permission:PermissionNotify')->prefix('notify')->group(function (){
 
           //   email
             Route::prefix('email')->group(function () {
@@ -91,7 +107,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::prefix('shop')->group(function (){
 
         //order
-        Route::prefix('order')->group(function () {
+        Route::middleware('permission:PermissionOrder')->prefix('order')->group(function () {
             Route::get('/', [OrderController::class, 'all'])->name('admin.shop.order.all');
             Route::get('/new-order', [OrderController::class, 'newOrders'])->name('admin.shop.order.newOrders');
             Route::get('/sending', [OrderController::class, 'sending'])->name('admin.shop.order.sending');
@@ -106,7 +122,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //        category product
-        Route::prefix('category')->group(function () {
+        Route::middleware('permission:PermissionCategoryProduct')->prefix('category')->group(function () {
             Route::get('/', [ProductCategoryController::class, 'index'])->name('admin.shop.category.index');
             Route::get('create', [ProductCategoryController::class, 'create'])->name('admin.shop.category.create');
             Route::post('store', [ProductCategoryController::class, 'store'])->name('admin.shop.category.store');
@@ -117,7 +133,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //payment
-        Route::prefix('payment')->group(function () {
+        Route::middleware('permission:PermissionPayment')->prefix('payment')->group(function () {
             Route::get('/', [PaymentController::class, 'index'])->name('admin.shop.payment.index');
             Route::get('online', [PaymentController::class, 'online'])->name('admin.shop.payment.online');
             Route::get('show/{payment}', [PaymentController::class, 'show'])->name('admin.shop.payment.show');
@@ -128,7 +144,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //        delivery
-        Route::prefix('delivery')->group(function () {
+        Route::middleware('permission:PermissionDelivery')->prefix('delivery')->group(function () {
             Route::get('/', [DeliveryController::class, 'index'])->name('admin.shop.delivery.index');
             Route::get('create', [DeliveryController::class, 'create'])->name('admin.shop.delivery.create');
             Route::post('store', [DeliveryController::class, 'store'])->name('admin.shop.delivery.store');
@@ -139,7 +155,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //        brand product
-        Route::prefix('brand')->group(function () {
+        Route::middleware('permission:PermissionBrand')->prefix('brand')->group(function () {
             Route::get('/', [BrandController::class, 'index'])->name('admin.shop.brand.index');
             Route::get('create', [BrandController::class, 'create'])->name('admin.shop.brand.create');
             Route::post('store', [BrandController::class, 'store'])->name('admin.shop.brand.store');
@@ -150,7 +166,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //        storeroom product
-        Route::prefix('storeroom')->group(function () {
+        Route::middleware('permission:PermissionStoreRoom')->prefix('storeroom')->group(function () {
             Route::get('/', [StoreRoomController::class, 'index'])->name('admin.shop.storeroom.index');
             Route::get('add-to-store/{product}', [StoreRoomController::class, 'add'])->name('admin.shop.storeroom.add-to-store');
             Route::post('store/{product}', [StoreRoomController::class, 'store'])->name('admin.shop.storeroom.store');
@@ -159,7 +175,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //comment
-        Route::prefix('comment')->group(function () {
+        Route::middleware('permission:PermissionCommentProduct')->prefix('comment')->group(function () {
             Route::get('/', [CommentProductController::class, 'index'])->name('admin.shop.comment.index');
             Route::get('answered', [CommentProductController::class, 'answered'])->name('admin.shop.comment.answered');
             Route::get('not-answer', [CommentProductController::class, 'notAnswer'])->name('admin.shop.comment.not-answer');
@@ -171,7 +187,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //        product
-        Route::prefix('product')->group(function () {
+        Route::middleware('permission:PermissionProduct')->prefix('product')->group(function () {
             Route::get('/', [ProductController::class, 'index'])->name('admin.shop.product.index');
             Route::get('create', [ProductController::class, 'create'])->name('admin.shop.product.create');
             Route::post('store', [ProductController::class, 'store'])->name('admin.shop.product.store');
@@ -219,7 +235,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     });
 
 //     discount
-      Route::prefix('discount')->group(function (){
+      Route::middleware('permission:PermissionDiscount')->prefix('discount')->group(function (){
 
 //        copan
           Route::prefix('copan')->group(function () {
@@ -260,7 +276,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::prefix('blog')->group(function (){
 
 //        category post
-        Route::prefix('category')->group(function () {
+        Route::middleware('permission:PermissionCategoryPost')->prefix('category')->group(function () {
             Route::get('/', [PostCategoryController::class, 'index'])->name('admin.blog.category.index');
             Route::get('create', [PostCategoryController::class, 'create'])->name('admin.blog.category.create');
             Route::post('store', [PostCategoryController::class, 'store'])->name('admin.blog.category.store');
@@ -271,7 +287,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //         post
-        Route::prefix('post')->group(function () {
+        Route::middleware('permission:PermissionPost')->prefix('post')->group(function () {
             Route::get('/', [PostController::class, 'index'])->name('admin.blog.post.index');
             Route::get('create', [PostController::class, 'create'])->name('admin.blog.post.create');
             Route::post('store', [PostController::class, 'store'])->name('admin.blog.post.store');
@@ -282,7 +298,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //         label
-        Route::prefix('label')->group(function () {
+        Route::middleware('permission:PermissionLabel')->prefix('label')->group(function () {
             Route::get('/', [LabelController::class, 'index'])->name('admin.blog.label.index');
             Route::get('create', [LabelController::class, 'create'])->name('admin.blog.label.create');
             Route::post('store', [LabelController::class, 'store'])->name('admin.blog.label.store');
@@ -293,7 +309,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //         faq
-        Route::prefix('faq')->group(function () {
+        Route::middleware('permission:PermissionFaq')->prefix('faq')->group(function () {
             Route::get('/', [FaqController::class, 'index'])->name('admin.blog.faq.index');
             Route::get('create', [FaqController::class, 'create'])->name('admin.blog.faq.create');
             Route::post('store', [FaqController::class, 'store'])->name('admin.blog.faq.store');
@@ -304,7 +320,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         });
 
         //comment
-        Route::prefix('comment')->group(function () {
+        Route::middleware('permission:PermissionCommentPost')->prefix('comment')->group(function () {
             Route::get('/', [CommentPostController::class, 'index'])->name('admin.blog.comment.index');
             Route::get('answered', [CommentPostController::class, 'answered'])->name('admin.blog.comment.answered');
             Route::get('not-answer', [CommentPostController::class, 'notAnswer'])->name('admin.blog.comment.not-answer');
@@ -318,7 +334,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
     });
 
-    Route::prefix('ticket')->group(function (){
+    Route::middleware('permission:PermissionTicket')->prefix('ticket')->group(function (){
 
         //        ticket
         Route::get('/', [TicketController::class, 'index'])->name('admin.ticket.index');
@@ -345,8 +361,24 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
     });
 
+
+
+        Route::middleware('permission:PermissionRole')->prefix('role')->group(function (){
+            Route::get('/' , [RoleController::class , 'index'])->name('admin.role.index');
+            Route::get('create' , [RoleController::class , 'create'])->name('admin.role.create');
+            Route::post('create/store' , [RoleController::class , 'store'])->name('admin.role.store');
+            Route::get('edit/{role}' , [RoleController::class , 'edit'])->name('admin.role.edit');
+            Route::put('update/{role}' , [RoleController::class , 'update'])->name('admin.role.update');
+            Route::delete('destroy/{role}' , [RoleController::class , 'destroy'])->name('admin.role.destroy');
+            Route::get('permission/{role}' , [RoleController::class , 'permissionShow'])->name('admin.role.permission.show');
+            Route::post('permission/{role}' , [RoleController::class , 'permissionStore'])->name('admin.role.permission.store');
+            Route::get('delete/permission/{role}/{permission}' , [RoleController::class , 'permissionDelete'])->name('admin.role.permission.delete');
+        });
+
+
+
 //    setting
-    Route::prefix('setting')->group(function (){
+    Route::middleware('permission:PermissionSetting')->prefix('setting')->group(function (){
 
         //      sms setting
         Route::prefix('sms-setting')->group(function () {

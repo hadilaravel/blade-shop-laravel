@@ -99,7 +99,7 @@
                                                     <form class="d-inline" action="{{ route('admin.ticket.destroy', $ticket->id) }}" method="post">
                                                         @csrf
                                                         {{ method_field('delete') }}
-                                                        <button  class="dropdown-item bg-danger text-white text-right" type="submit">
+                                                        <button  class="dropdown-item bg-danger text-white text-right outloneLi" type="submit">
                                                             <i class="fa fa-trash-o font-medium-3"></i>
                                                             حذف
                                                         </button>
