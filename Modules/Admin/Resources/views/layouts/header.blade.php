@@ -14,9 +14,8 @@
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="dropdown nav-item mr-0"><a id="dropdownBasic3" href="#" data-toggle="dropdown"
-                                                          class="nav-link position-relative dropdown-user-link dropdown-toggle"><span
-                                class="avatar avatar-online"><img id="navbar-avatar"
-                                                                  src="{{ asset(auth()->user()->profile) }}" alt="avatar" /></span>
+                                                          class="nav-link position-relative dropdown-user-link dropdown-toggle"><span class="avatar avatar-online"><img id="navbar-avatar" src="{{ asset(auth()->user()->profile) }}" alt="avatar" /></span>
+                            <span>{{ auth()->user()->name }}</span>
                             <p class="d-none">تنظیمات کاربر</p>
                         </a>
                         <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-left">

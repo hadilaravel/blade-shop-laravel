@@ -16,7 +16,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = Role::query()->paginate(8);
+        $roles = Role::query()->whereNot('name' ,'super admin')->paginate(8);
         return view('admin::role.index' , compact('roles'));
     }
 

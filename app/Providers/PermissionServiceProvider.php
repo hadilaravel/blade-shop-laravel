@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Modules\Admin\Entities\Access\Permission;
 
-class PermissionProvider extends ServiceProvider
+class PermissionServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

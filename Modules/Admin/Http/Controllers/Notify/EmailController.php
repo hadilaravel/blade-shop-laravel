@@ -79,6 +79,7 @@ class EmailController extends Controller
     {
         SendEmailToUser::dispatch($email);
         alert()->success('عملیات با موفقیت انجام شد');
-        return to_route('admin.notify.email.index');    }
+        return to_route('admin.notify.email.index');
+    }
 
 }

@@ -25,6 +25,20 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput5">نام کاربری : </label>
                                         <div class="col-md-9">
+                                            <input type="text"  id="projectinput5" class="form-control form-control-sm" name="username" value="{{ old('username') }}">
+                                            @error('username')
+                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                           <strong>
+                                             {{ $message }}
+                                          </strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput5">نام و نام خانوادگی : </label>
+                                        <div class="col-md-9">
                                             <input type="text"  id="projectinput5" class="form-control form-control-sm" name="name" value="{{ old('name') }}">
                                             @error('name')
                                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -34,7 +48,6 @@
                                         </span>
                                             @enderror
                                         </div>
-
                                     </div>
 
 

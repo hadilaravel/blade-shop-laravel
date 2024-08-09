@@ -2,8 +2,8 @@
 
 namespace Modules\Admin\Jobs\Notify;
 
-use App\Http\Services\Message\Email\EmailService;
-use App\Http\Services\Message\MessageService;
+use App\Http\Service\Message\Email\EmailService;
+use App\Http\Service\Message\MessageService;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

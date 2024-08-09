@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Modules\Admin\Entities\Access\Permission;
+use Modules\Admin\Entities\Access\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
 //        admin
         $user = User::query()->where('username' , 'admin')->first();
         if(empty($user)) {
-            User::query()->create([
+           $user =  User::query()->create([
                 'name' => 'admin',
                 'username' => 'admin',
                 'password' => bcrypt('Admin@22'),
@@ -27,19 +28,26 @@ class DatabaseSeeder extends Seeder
                 'profile' => 'image/admin/admin.png'
             ]);
         }
-
+        $role = Role::query()->where('name' , 'super admin')->first();
+        if(empty($role)) {
+              $role = Role::query()->create([
+                 'name' => 'super admin',
+                 'description' => 'ادمین کل',
+              ]);
+        }
+        $user->roles()->sync($role);
 
         foreach (Permission::$permissions as $permission)
         {
             $permissionExists = Permission::query()->where('name' , $permission)->first();
             if(empty($permissionExists)) {
-                Permission::query()->create([
+                 Permission::query()->create([
                     'name' => $permission,
                 ]);
             }
-
         }
-
+        $perRol = Permission::all();
+        $role->permissions()->sync($perRol);
 
     }
 }

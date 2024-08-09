@@ -17,7 +17,7 @@ class UserAdminController extends Controller
 
     public function index()
     {
-        $userAdmins = User::query()->where('user_type' , 1)->get();
+        $userAdmins = User::query()->where('user_type' , 1)->get()->except(auth()->id());
         return view('admin::user.user-admin.index' , compact('userAdmins'));
     }
 
@@ -29,10 +29,10 @@ class UserAdminController extends Controller
 
     public function store(UserAdminRequest $request)
     {
-        $request->password = Hash::make($request->password);
         $inputs = [
             'name' => $request->name,
-            'password' => $request->password,
+            'username' => $request->username ,
+            'password' => bcrypt($request->password),
             'activation' => $request->activation,
             'user_type'=> 1,
         ];
@@ -54,12 +54,10 @@ class UserAdminController extends Controller
 
     public function update(UserAdminRequest $request, User $user)
     {
-        if(!empty($request->password)) {
-            $request->password = Hash::make($request->password);
-        }
         $inputs = [
+            'username' => $request->username ,
             'name' => $request->name,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'activation' => $request->activation,
             'user_type'=> 1,
         ];

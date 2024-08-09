@@ -29,31 +29,31 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionBrand')
                 <li class=" nav-item"><a href="{{ route('admin.shop.brand.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                   class="menu-title"> برند های محصول</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.product.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                class="menu-title">محصولات</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionStoreRoom')
                 <li class=" nav-item"><a href="{{ route('admin.shop.storeroom.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                  class="menu-title">انبار</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionDelivery')
                 <li class=" nav-item"><a href="{{ route('admin.shop.delivery.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                    class="menu-title">روش های ارسال</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionPayment')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                            class="menu-title"> پرداخت ها</span></a>
                     <ul class="menu-content">
@@ -65,7 +65,7 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionOrder')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                            class="menu-title"> سفارشات</span></a>
                     <ul class="menu-content">
@@ -79,7 +79,7 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionCommentProduct')
                 <li  class="has-sub nav-item"><a ><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                    class="menu-title"> نظرات</span></a>
                     <ul class="menu-content">
@@ -97,19 +97,19 @@
                             بخش کاربران
                         </span></a>
                 </li>
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionUserAdmin')
                 <li class=" nav-item"><a href="{{ route('admin.user-admin.index') }}"><i class="fa fa-user"></i><span data-i18n=""
                                                                                                                              class="menu-title">کاربران ادمین</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionCustomer')
                 <li class=" nav-item"><a href="{{ route('admin.user.customer.index') }}"><i class="fa fa-user"></i><span data-i18n=""
                                                                                                                               class="menu-title">مشتریان</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionRole')
                 <li class="nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش سطوح دسترسی
                         </span></a>
@@ -119,7 +119,7 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionDiscount')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش تخفیف ها
                         </span></a>
@@ -140,31 +140,31 @@
                             بخش وبلاگ
                         </span></a>
                 </li>
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionCategoryPost')
                 <li class=" nav-item"><a href="{{ route('admin.blog.category.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                     class="menu-title"> دسته بندی پست</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionPost')
                 <li class=" nav-item"><a href="{{ route('admin.blog.post.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                           class="menu-title"> پست ها </span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionLabel')
                 <li class=" nav-item"><a href="{{ route('admin.blog.label.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title"> برچسب ها </span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionFaq')
                 <li class=" nav-item"><a href="{{ route('admin.blog.faq.index') }}"><i class="icon-layers"></i><span data-i18n=""
                                                                                                                       class="menu-title">سوالات متداول</span></a>
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionCommentPost')
                 <li  class="has-sub nav-item"><a ><i class="icon-layers"></i><span data-i18n=""
                                                                                           class="menu-title"> نظرات</span></a>
                     <ul class="menu-content">
@@ -178,7 +178,7 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionNotify')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                            اطلاع رسانی
                         </span></a>
@@ -191,7 +191,7 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionTicket')
                 <li class=" nav-item liClass" ><a ><span data-i18n="" class="menu-title spanish">
                             بخش تیکت ها
                         </span></a>
@@ -212,12 +212,12 @@
                 </li>
                 @endpermission
 
-                @permission('PermissionCategoryProduct')
+                @permission('PermissionSetting')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                             بخش تنظیمات
                         </span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.discount.common.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
+                <li class=" nav-item"><a href="{{ route('admin.setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
                                                                                                                              class="menu-title">تنظیمات سایت</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.setting.sms-setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""

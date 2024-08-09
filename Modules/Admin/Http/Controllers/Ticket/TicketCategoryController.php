@@ -53,7 +53,8 @@ class TicketCategoryController extends Controller
     {
         $result = $ticketCategory->delete();
         alert()->success('عملیات با موفقیت انجام شد');
-        return to_route('admin.ticket.category.index');    }
+        return to_route('admin.ticket.category.index');
+    }
 
 
     public function status(TicketCategory $ticketCategory){

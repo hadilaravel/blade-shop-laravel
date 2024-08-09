@@ -30,6 +30,9 @@ use Modules\Admin\Http\Controllers\Notify\SmsController;
 use Modules\Admin\Http\Controllers\Setting\SmsSettingController;
 use Modules\Admin\Http\Controllers\Access\RoleController;
 use Modules\Admin\Http\Controllers\User\UserAdminController;
+use Modules\Admin\Http\Controllers\Setting\SettingController;
+use Modules\Admin\Http\Controllers\Setting\ContactController;
+use Modules\Admin\Http\Controllers\Setting\SocialController;
 
 
 
@@ -380,6 +383,12 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
 //    setting
     Route::middleware('permission:PermissionSetting')->prefix('setting')->group(function (){
 
+        //     setting
+        Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
+        Route::get('edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
+        Route::put('update/{setting}', [SettingController::class, 'update'])->name('admin.setting.update');
+
+
         //      sms setting
         Route::prefix('sms-setting')->group(function () {
             Route::get('/', [SmsSettingController::class, 'index'])->name('admin.setting.sms-setting.index');
@@ -387,6 +396,22 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::put('update/{smsSetting}', [SmsSettingController::class, 'update'])->name('admin.setting.sms-setting.update');
         });
 
+        //        social
+        Route::prefix('social')->group(function () {
+            Route::get('/', [SocialController::class, 'index'])->name('admin.setting.social.index');
+            Route::get('/edit/{social}', [SocialController::class, 'edit'])->name('admin.setting.social.edit');
+            Route::put('/update/{social}', [SocialController::class, 'update'])->name('admin.setting.social.update');
+        });
+
+        //        contact
+        Route::prefix('contact')->group(function () {
+            Route::get('/', [ContactController::class, 'index'])->name('admin.setting.contact.index');
+            Route::get('/create', [ContactController::class, 'create'])->name('admin.setting.contact.create');
+            Route::post('/store', [ContactController::class, 'store'])->name('admin.setting.contact.store');
+            Route::get('/edit/{contact}', [ContactController::class, 'edit'])->name('admin.setting.contact.edit');
+            Route::put('/update/{contact}', [ContactController::class, 'update'])->name('admin.setting.contact.update');
+            Route::delete('/destroy/{contact}', [ContactController::class, 'destroy'])->name('admin.setting.contact.destroy');
+        });
 
     });
 

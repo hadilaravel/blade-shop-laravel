@@ -32,6 +32,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>نام و نام خانوادگی</th>
                                     <th>نام کاربری</th>
                                     <th>وضعیت</th>
                                     <th>نقش</th>
@@ -45,6 +46,7 @@
                                     <tr>
                                         <th>{{ convertEnglishToPersian($key += 1) }}</th>
                                         <td>{{ $userAdmin->name }}</td>
+                                        <td>{{ $userAdmin->username }}</td>
                                         <td>
                                             @if(!$userAdmin->hasRole('super admin'))
                                             <a href="{{ route('admin.user-admin.status', $userAdmin->id) }}" class="btn btn-{{ $userAdmin->activation == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $userAdmin->activation == 1 ? 'check' : 'window-close' }}"></i> </a>

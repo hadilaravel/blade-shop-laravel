@@ -16,14 +16,16 @@ class UserAdminRequest extends FormRequest
     {
         if($this->isMethod('post')) {
             return [
-                'name' => 'required|max:120|unique:users,name|min:5|regex:/^[a-zA-Z0-9]+$/u',
+                'name' => 'required',
+                'username' =>  'required|max:120|unique:users,name|min:5|regex:/^[a-zA-Z0-9]+$/u',
                 'password' => ['required', 'unique:users', Password::min(8)->letters()->mixedCase()->numbers()->symbols(), 'confirmed' ],
                 'activation' => 'required|numeric|in:0,1',
                 'profile' => 'required|image|mimes:jpg,png,jpeg,webp',
             ];
         }else{
             return [
-                'name' => 'required|max:120|min:5|regex:/^[a-zA-Z0-9]+$/u|unique:users,id, ' . request()->id,
+                'name' => 'required',
+                'username' =>  'required|max:120|min:5|regex:/^[a-zA-Z0-9]+$/u|unique:users,id, ' . request()->id,
                 'password' => ['nullable', 'unique:users', Password::min(8)->letters()->mixedCase()->numbers()->symbols(), 'confirmed'],
                 'activation' => 'required|numeric|in:0,1',
                 'profile' => 'nullable|image|mimes:jpg,png,jpeg,webp',
