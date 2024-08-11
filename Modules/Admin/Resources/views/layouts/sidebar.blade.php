@@ -35,6 +35,12 @@
                 </li>
                 @endpermission
 
+                @permission('PermissionBanner')
+                <li class=" nav-item"><a href="{{ route('admin.shop.banner.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
+                                                                                                                               class="menu-title">بنر ها</span></a>
+                </li>
+                @endpermission
+
                 @permission('PermissionProduct')
                 <li class=" nav-item"><a href="{{ route('admin.shop.product.index') }}"><i class="fa fa-shopping-cart"></i><span data-i18n=""
                                                                                                                                class="menu-title">محصولات</span></a>

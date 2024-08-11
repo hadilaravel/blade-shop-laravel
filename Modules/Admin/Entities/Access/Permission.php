@@ -43,6 +43,7 @@ class Permission extends Model
     public Const PermissionCategoryTicket = 'PermissionCategoryTicket';
     public Const PermissionTicket = 'PermissionTicket';
     public Const PermissionSetting = 'PermissionSetting';
+    public Const PermissionBanner = 'PermissionBanner';
 
 
 
@@ -68,6 +69,7 @@ class Permission extends Model
         self::PermissionCategoryTicket,
         self::PermissionTicket,
         self::PermissionSetting,
+        self::PermissionBanner,
     ];
 
 

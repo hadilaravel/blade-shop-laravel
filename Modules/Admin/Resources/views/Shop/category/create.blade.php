@@ -37,6 +37,20 @@
 
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput5">عکس : </label>
+                                        <div class="col-md-9">
+                                            <input type="file"  id="projectinput5" class="form-control form-control-sm" name="image" >
+                                            @error('image')
+                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                           <strong>
+                                             {{ $message }}
+                                          </strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="projectinput6">  والد: </label>

@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Http\Controllers\Shop;
 
+use App\Http\Service\ShareService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -33,6 +34,10 @@ class ProductCategoryController extends Controller
             'status' => $request->status,
         ];
         $inputs['slug'] = persianSlug($request->name);
+        if($request->hasFile('image')) {
+            $imageName = ShareService::uploadFilePublic($request->file('image') ,'image/shop/category');
+            $inputs['image'] = $imageName;
+        }
         ProductCategory::query()->create($inputs);
         alert()->success('عملیات با موفقیت انجام شد');
         return to_route('admin.shop.category.index');
@@ -54,6 +59,11 @@ class ProductCategoryController extends Controller
             'status' => $request->status,
         ];
         $inputs['slug'] = persianSlug($request->name);
+        if($request->hasFile('image')) {
+            ShareService::deleteFilePublic($productCategory->image);
+            $imageName = ShareService::uploadFilePublic($request->file('image') ,'image/shop/category');
+            $inputs['image'] = $imageName;
+        }
         $productCategory->update($inputs);
         alert()->success('عملیات با موفقیت انجام شد');
         return to_route('admin.shop.category.index');
@@ -61,6 +71,7 @@ class ProductCategoryController extends Controller
 
     public function destroy(ProductCategory $productCategory)
     {
+        ShareService::deleteFilePublic($productCategory->image);
         $productCategory->delete();
         alert()->success('عملیات با موفقیت انجام شد');
         return to_route('admin.shop.category.index');

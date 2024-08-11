@@ -120,7 +120,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-control" for="body">  توضیحات  فوتر:</label>
                                         <div class="col-md-9">
-                                            <textarea  rows="7"  class="form-control" name="body">{{ old('body' , $setting->body) }}</textarea>
+                                            <textarea id="body" rows="7"  class="form-control" name="body">{{ old('body' , $setting->body) }}</textarea>
                                             @error('body')
                                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                            <strong>
@@ -149,3 +149,4 @@
 
 
 @endsection
+

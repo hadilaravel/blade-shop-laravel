@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Home</title>
-
-       {{-- Laravel Vite - CSS File --}}
-       {{-- {{ module_vite('build-home', 'Resources/assets/sass/app.scss') }} --}}
-
+        @include('home::layouts.head-tag' , compact('setting'))
+        @yield('head-tag')
     </head>
-    <body>
-        @yield('content')
+    <body  class="bg-gray-50">
 
-        {{-- Laravel Vite - JS File --}}
-        {{-- {{ module_vite('build-home', 'Resources/assets/js/app.js') }} --}}
+    @include('home::layouts.header' , compact('setting'))
+
+    <div class="max-w-[1440px] mx-auto px-3">
+       @yield('content')
+    </div>
+
+    @include('home::layouts.footer' , compact('setting'))
+
+    @include('sweetalert::alert')
+
+    @include('home::layouts.script')
+    @yield('script')
     </body>
 </html>

@@ -49,8 +49,8 @@
                                         <td>
                                             <img src="{{ asset($setting->icon) }}" width="100px" height="100px">
                                         </td>
-                                        <td>{{  \Illuminate\Support\Str::limit($setting->description , 50) }}</td>
-                                        <td>{{  \Illuminate\Support\Str::limit($setting->body , 50) }}</td>
+                                        <td>{{  \Illuminate\Support\Str::limit($setting->description , 20) }}</td>
+                                        <td>{{  \Illuminate\Support\Str::limit($setting->body , 5) }}</td>
                                         <td>
                                             <img src="{{ asset($setting->logo_header) }}" width="100px" height="100px">
                                         </td>

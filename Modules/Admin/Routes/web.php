@@ -33,7 +33,7 @@ use Modules\Admin\Http\Controllers\User\UserAdminController;
 use Modules\Admin\Http\Controllers\Setting\SettingController;
 use Modules\Admin\Http\Controllers\Setting\ContactController;
 use Modules\Admin\Http\Controllers\Setting\SocialController;
-
+use Modules\Admin\Http\Controllers\Shop\BannerController;
 
 
 /*
@@ -133,6 +133,17 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::put('update/{productCategory}', [ProductCategoryController::class, 'update'])->name('admin.shop.category.update');
             Route::delete('destroy/{productCategory}', [ProductCategoryController::class, 'destroy'])->name('admin.shop.category.destroy');
             Route::get('status/{productCategory}', [ProductCategoryController::class, 'status'])->name('admin.shop.category.status');
+        });
+
+        //        banner
+        Route::middleware('permission:PermissionBanner')->prefix('banner')->group(function () {
+            Route::get('/', [BannerController::class, 'index'])->name('admin.shop.banner.index');
+            Route::get('create', [BannerController::class, 'create'])->name('admin.shop.banner.create');
+            Route::post('store', [BannerController::class, 'store'])->name('admin.shop.banner.store');
+            Route::get('edit/{banner}', [BannerController::class, 'edit'])->name('admin.shop.banner.edit');
+            Route::put('update/{banner}', [BannerController::class, 'update'])->name('admin.shop.banner.update');
+            Route::delete('destroy/{banner}', [BannerController::class, 'destroy'])->name('admin.shop.banner.destroy');
+            Route::get('status/{banner}', [BannerController::class, 'status'])->name('admin.shop.banner.status');
         });
 
         //payment
