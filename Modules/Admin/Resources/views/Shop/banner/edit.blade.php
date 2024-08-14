@@ -32,6 +32,7 @@
                                                 <option value="2" @if(old('position' , $banner->position) == 2) selected @endif>تصویر زیر اسلایدر</option>
                                                 <option value="3" @if(old('position' , $banner->position) == 3) selected @endif>تصویر ها</option>
                                                 <option value="4" @if(old('position' , $banner->position) == 4) selected @endif>دو تصویر</option>
+                                                <option value="5" @if(old('position' , $banner->position) == 5) selected @endif>عکس آخرین پیشنهاد</option>
                                             </select>
                                             @error('position')
                                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">

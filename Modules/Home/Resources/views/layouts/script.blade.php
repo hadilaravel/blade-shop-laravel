@@ -5,6 +5,7 @@
 <script src="{{ asset('home-assets/js/navbar.js') }}"></script>
 <!-- SHOW MODAL SEARCH -->
 <script src="{{ asset('home-assets/js/searchBox.js') }}"></script>
+<script src="{{ asset('home-assets/js/bootstrap.min.js') }}"></script>
 <!-- SLIDER HERO -->
 <script src="{{ asset('home-assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('home-assets/js/owl.carousel.min.js') }}"></script>

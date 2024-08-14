@@ -12,7 +12,7 @@
        @yield('content')
     </div>
 
-    @include('home::layouts.footer' , compact('setting'))
+    @include('home::layouts.footer' , compact('setting' , 'contacts' , 'instagram' , 'whatsapp' , 'telegram'))
 
     @include('sweetalert::alert')
 

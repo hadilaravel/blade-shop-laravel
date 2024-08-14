@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Entities\Shop;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -56,6 +57,16 @@ class Product extends Model
     public function metas()
     {
         return $this->hasMany(ProductMeta::class);
+    }
+
+    public function amazingSales()
+    {
+        return $this->hasMany(AmazingSale::class);
+    }
+
+    public function activeAmazingSales()
+    {
+        return $this->amazingSales()->where('status' , 1)->where('start_date' , '<' , Carbon::now())->where('end_date' , '>' , Carbon::now())->first();
     }
 
 

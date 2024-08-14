@@ -16,14 +16,14 @@ class ProductRequest extends FormRequest
 
         if($this->isMethod('post')){
             return [
-                'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'introduction' => 'required|max:1000|min:5',
+                'name' => 'required|max:120|min:2',
+                'introduction' => 'required',
                 'weight' => 'required|max:1000|min:1',
                 'length' => 'required|max:1000|min:1',
                 'width' => 'required|max:1000|min:1',
                 'height' => 'required|max:1000|min:1',
                 'price' => 'required|numeric',
-                'image' => 'required|image|mimes:png,jpg,jpeg,gif',
+                'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp',
                 'status' => 'required|numeric|in:0,1',
                 'marketable' => 'required|numeric|in:0,1',
                 'category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:product_categories,id',
@@ -32,14 +32,14 @@ class ProductRequest extends FormRequest
         }
         else{
             return [
-                'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'introduction' => 'required|max:1000|min:5',
+                'name' => 'required|max:120|min:2',
+                'introduction' => 'required',
                 'weight' => 'required|max:1000|min:1',
                 'length' => 'required|max:1000|min:1',
                 'width' => 'required|max:1000|min:1',
                 'height' => 'required|max:1000|min:1',
                 'price' => 'required|numeric',
-                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif',
+                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif,webp',
                 'status' => 'required|numeric|in:0,1',
                 'marketable' => 'required|numeric|in:0,1',
                 'category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:product_categories,id',

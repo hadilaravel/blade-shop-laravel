@@ -4,7 +4,9 @@ namespace Modules\Home\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Admin\Entities\Setting\Contact;
 use Modules\Admin\Entities\Setting\Setting;
+use Modules\Admin\Entities\Setting\Social;
 
 class HomeServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,10 @@ class HomeServiceProvider extends ServiceProvider
 
         view()->composer('home::layouts.master' , function ($view){
             $view->with('setting' , Setting::query()->first());
+            $view->with('instagram' , Social::query()->where('name_id' , 1)->first());
+            $view->with('whatsapp' , Social::query()->where('name_id' , 2)->first());
+            $view->with('telegram' , Social::query()->where('name_id' , 3)->first());
+            $view->with('contacts' , Contact::all());
         });
 
     }

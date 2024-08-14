@@ -6,7 +6,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Blog\Comment;
+use Modules\Admin\Entities\Blog\Post;
 use Modules\Admin\Http\Requests\Blog\CommentRequest;
+use Modules\Home\Http\Requests\CommentPostRequest;
 
 class CommentPostController extends Controller
 {
@@ -113,5 +115,19 @@ class CommentPostController extends Controller
             return to_route('admin.blog.comment.index');
         }
     }
+
+    public function storeComment(CommentPostRequest $request , Post $post)
+    {
+        $inputs = [
+            'author_id' => auth()->id(),
+            'body' => $request->body,
+            'commentable_type' => Post::class,
+            'commentable_id' => $post->id ,
+        ];
+        Comment::query()->create($inputs);
+        alert()->success('  نظر ' , '  نظر شما پس از تایید در سایت نشان داده میشود  ')->persistent('باشه');
+        return back();
+    }
+
 
 }

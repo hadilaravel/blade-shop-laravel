@@ -31,7 +31,7 @@ class BannerController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp',
-            'position' => 'required|numeric|in:1,2,3,4',
+            'position' => 'required|numeric|in:1,2,3,4,5',
             'status' => 'required|numeric|in:0,1',
         ]);
 
@@ -57,7 +57,7 @@ class BannerController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp',
-            'position' => 'required|numeric|in:1,2,3,4',
+            'position' => 'required|numeric|in:1,2,3,4,5',
             'status' => 'required|numeric|in:0,1',
         ]);
 

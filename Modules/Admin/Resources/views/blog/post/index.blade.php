@@ -46,7 +46,7 @@
                                 @foreach ($posts as $key => $post)
                                     <tr>
                                         <th>{{ convertEnglishToPersian($key += 1) }}</th>
-                                        <td>{{ $post->title }}</td>
+                                        <td>{{ \Illuminate\Support\Str::limit($post->title , 40) }}</td>
                                         <td>{!!  \Illuminate\Support\Str::limit($post->body , 20) !!}</td>
                                         <td class=" text-{{ $post->commentable == 0 ? 'danger' : 'success' }}">{{ $post->commentable == 0 ? 'غیرفعال' : 'فعال' }}</td>
                                         <td>

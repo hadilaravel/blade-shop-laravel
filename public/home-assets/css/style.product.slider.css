@@ -14,6 +14,27 @@
   background: rgb(255, 255, 255);
   border-radius: 50%;
 }
+
+.product-info-colors {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: -0.3rem;
+    padding: 5px;
+}
+
+.inputBorder{
+    border: solid blue 3px;
+}
+
+.cart-product-selected-warranty {
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: -0.3rem;
+}
+
 .swiper-navBtn::before,
 .swiper-navBtn::after {
   font-size: 20px;

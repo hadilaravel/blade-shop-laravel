@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->text('image');
-            $table->integer('position')->comment(' 1 => slider , 2 => under slider , 3 => images , 4 => two photos');
+            $table->integer('position')->comment(' 1 => slider , 2 => under slider , 3 => images , 4 => two photos , 5 => Last offer image');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

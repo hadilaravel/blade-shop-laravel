@@ -4,7 +4,7 @@
     <nav
         class="relative px-5 py-2 flex flex-wrap justify-between items-start pt-5 bg-white">
         <a class="order-2" href="{{ route('home.index') }}">
-            <img class="w-36" src="{{ $setting->logo_header }}" alt="{{ $setting->title }}" />
+            <img class="w-36" src="{{ asset($setting->logo_header) }}" alt="{{ $setting->title }}" />
         </a>
         <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
             <div class="relative">

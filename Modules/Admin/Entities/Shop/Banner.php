@@ -26,6 +26,9 @@ class Banner extends Model
         else if($this->position == 4){
             $result = 'دو تصویر';
         }
+        else if($this->position == 5){
+            $result = 'عکس آخرین پیشنهاد';
+        }
         return $result ;
     }
 
