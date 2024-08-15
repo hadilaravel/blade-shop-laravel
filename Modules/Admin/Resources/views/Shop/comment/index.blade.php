@@ -49,7 +49,7 @@
                                             {{ $comment->parent_id ? \Illuminate\Support\Str::limit($comment->parent->body , 20) : '-' }}
                                         </td>
                                         <td>{{ $comment->user->name ?? '-' }}</td>
-                                        <td>{{ $comment->commentable->title ?? '-' }}</td>
+                                        <td>{{ $comment->commentable->name ?? '-' }}</td>
                                         <td>
                                             <a href="{{ route('admin.blog.comment.status', $comment->id) }}" class="btn btn-{{ $comment->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $comment->status == 1 ? 'check' : 'window-close' }}"></i> </a>
                                         </td>

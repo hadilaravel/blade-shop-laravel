@@ -34,13 +34,15 @@ class HomeController extends Controller
 
     public function product(Product $product)
     {
-        return view('home::product.product' ,  compact('product'));
+        $category = $product->category->id;
+        $relatedProducts = Product::query()->where('category_id' , $category)->where('status' , 1)->get();
+        return view('home::product.product' ,  compact('product' , 'relatedProducts'));
     }
 
     public function post(Post $post)
     {
         $category = $post->category->id;
-        $postRelateds = Post::query()->where('category_id' , $category)->latest()->limit(6)->get()->except($post->id);
+        $postRelateds = Post::query()->where('category_id' , $category)->where('status' , 1)->latest()->limit(6)->get()->except($post->id);
         return view('home::blog.post' ,  compact('post' , 'postRelateds'));
     }
 

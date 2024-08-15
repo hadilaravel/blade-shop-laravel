@@ -20,5 +20,9 @@ Route::get('post/{post:slug}' , [HomeController::class , 'post'] )->name('home.p
 Route::get('posts' , [HomeController::class , 'posts'])->name('home.post.all');
 
 
-// post comment   middleware('throttle:1,3')
-Route::post('comments/{post}' , [\Modules\Admin\Http\Controllers\Blog\CommentPostController::class , 'storeComment'])->name('home.comments.store');
+// product comment
+Route::middleware('throttle:2,2')->post('comment/product/{product}' , [\Modules\Admin\Http\Controllers\Blog\CommentPostController::class , 'storeCommentProduct'])->name('home.comments.product.store');
+
+
+// post comment
+Route::middleware('throttle:2,2')->post('comment/post/{post}' , [\Modules\Admin\Http\Controllers\Blog\CommentPostController::class , 'storeCommentPost'])->name('home.comments.post.store');

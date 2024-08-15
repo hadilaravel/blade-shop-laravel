@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Blog\Comment;
 use Modules\Admin\Entities\Blog\Post;
+use Modules\Admin\Entities\Shop\Product;
 use Modules\Admin\Http\Requests\Blog\CommentRequest;
 use Modules\Home\Http\Requests\CommentPostRequest;
 
@@ -116,13 +117,27 @@ class CommentPostController extends Controller
         }
     }
 
-    public function storeComment(CommentPostRequest $request , Post $post)
+    public function storeCommentPost(CommentPostRequest $request , Post $post)
     {
         $inputs = [
             'author_id' => auth()->id(),
             'body' => $request->body,
             'commentable_type' => Post::class,
             'commentable_id' => $post->id ,
+        ];
+        Comment::query()->create($inputs);
+        alert()->success('  نظر ' , '  نظر شما پس از تایید در سایت نشان داده میشود  ')->persistent('باشه');
+        return back();
+    }
+
+
+    public function storeCommentProduct(CommentPostRequest $request , Product $product)
+    {
+        $inputs = [
+            'author_id' => auth()->id(),
+            'body' => $request->body,
+            'commentable_type' => Product::class,
+            'commentable_id' => $product->id ,
         ];
         Comment::query()->create($inputs);
         alert()->success('  نظر ' , '  نظر شما پس از تایید در سایت نشان داده میشود  ')->persistent('باشه');

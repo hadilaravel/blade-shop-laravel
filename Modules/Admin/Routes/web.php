@@ -73,7 +73,6 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::get('role/{user}/{role}' , [UserAdminController::class , 'roleDelete'])->name('admin.user-admin.role.delete');
         });
 
-        Route::get('logout' , [AdminLoginController::class , 'logout'])->name('logout');
 
 
     });
@@ -428,6 +427,8 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
 
 
 });
+
+Route::middleware('auth')->get('logout' , [AdminLoginController::class , 'logout'])->name('logout');
 
 
 Route::prefix('admin-login')->group(function (){

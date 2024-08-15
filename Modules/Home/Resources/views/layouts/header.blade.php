@@ -121,13 +121,14 @@
             </div>
         </div>
         <div class="order-4 hidden lg:flex">
+
           <span
               class="block relative"
               x-data="{showChildren:false}"
               @mouseenter="showChildren=true"
               @mouseleave="showChildren=false">
             <a
-                href="#"
+                @if(!auth()->check()) href="{{ route('auth.register.view') }}" @endif
                 class="flex items-center h-10 leading-10 px-3 mx-1 transition rounded-xl hover:bg-red-50">
               <img class="ml-1 w-6" src="{{ asset('home-assets/image/user.png') }}" alt="" />
               <span
@@ -135,11 +136,14 @@
               >
                 ورود | ثبت نام
               </span>
+                 @if(auth()->check())
               <span>
                 <img class="w-4 mr-1" src="{{ asset('home-assets/image/chevron-down-login.png') }}" alt="" />
               </span>
+                @endif
             </a>
-            <div
+              @if(auth()->check())
+              <div
                 class="bg-white rounded-2xl shadow-md border-gray-50 text-sm absolute top-auto right-0 w-64 z-30 mt-1"
                 x-show="showChildren"
                 x-transition:enter="transition ease duration-300 transform"
@@ -166,7 +170,7 @@
                       ><img
                               class="w-8 ml-2"
                               src="{{ asset('home-assets/image/userNotImage.png') }}"
-                              alt="" />امیررضا کریمی</span
+                              alt="" />{{ auth()->user()->name }}</span
                       >
                     </a>
                   </li>
@@ -208,7 +212,7 @@
                       @mouseleave="showChildren=false"
                       @mouseenter="showChildren=true">
                     <a
-                        href="#"
+                        href="{{ route('logout') }}"
                         class="px-4 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span class="flex justify-center items-center text-sm opacity-90"
                       ><img class="w-5 ml-1" src="{{ asset('home-assets/image/exit.png') }}" alt="" />خروج
@@ -219,7 +223,10 @@
                 </ul>
               </div>
             </div>
+              @endif
           </span>
+
+            @if(auth()->check())
             <span
                 class="block relative"
                 x-data="{showChildren:false}"
@@ -227,7 +234,7 @@
                 @mouseenter="showChildren=true"
                 @mouseleave="showChildren=false">
             <a
-                href="./cart.html"
+                href=""
                 class="flex items-center h-10 leading-10 px-3 cursor-pointer no-underline hover:no-underline duration-100 mx-1 transition rounded-xl hover:bg-red-100">
               <img
                   class="inline ml-1 w-5"
@@ -255,6 +262,7 @@
                 @mouseleave="showChildren=false">
               <div class="bg-white rounded-2xl w-full relative z-10 py-2 px-2">
                 <ul class="list-reset flex flex-col gap-y-2">
+
                   <li
                       class="relative">
                     <a
@@ -289,40 +297,7 @@
                       </span>
                     </a>
                   </li>
-                  <li
-                      class="relative">
-                    <a
-                        href="./single-product.html"
-                        class="px-2 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
-                      <span class="flex justify-center items-center opacity-90">
-                        <div class="flex">
-                          <img
-                              class="w-14 ml-2 rounded-lg"
-                              src="./assets/image/product/bag.png"
-                              alt="" />
-                          <div class="flex flex-col flex-wrap gap-y-1 justify-center">
-                            <div class="opacity-80 w-full text-sm">
-                              کوله پشتی مدل ایستاده
-                            </div>
-                            <div class="flex opacity-75 text-xs">
-                              <div>
-                                قیمت:
-                              </div>
-                              <div>
-                                700,000
-                              </div>
-                              <div>
-                                تومان
-                              </div>
-                            </div>
-                          </div>
-                          <span class="text-red-400 hover:text-red-500 bg-red-100 hover:bg-red-200 px-2 text-xl font-bold h-7 rounded-full cursor-pointer absolute left-2 top-5">
-                            ×
-                          </span>
-                        </div>
-                      </span>
-                    </a>
-                  </li>
+
                   <li
                       class="relative">
                     <a
@@ -337,6 +312,7 @@
               </div>
             </div>
           </span>
+            @endif
         </div>
         <div class="order-1 lg:hidden">
             <button class="navbar-burger flex items-center text-red-300 p-3">

@@ -40,7 +40,7 @@
                         <!-- UO COMMENTS -->
                         <div>
                             <div>نظرات</div>
-                            <div class="pr-5 opacity-70 text-xs">{{ $post->comments->count() }}نظر </div>
+                            <div class="pr-5 opacity-70 text-xs">{{ $post->activeComments()->count() }}نظر </div>
                         </div>
                         <!-- COMMENT -->
 
@@ -85,7 +85,7 @@
                         </div>
 
                     @if(auth()->check())
-                        <form action="{{ route('home.comments.store' , $post->id) }}" method="post" >
+                        <form action="{{ route('home.comments.post.store' , $post->id) }}" method="post" >
                             @csrf
                         <!-- BOX SENT COMMENT -->
                         <div class="mb-4">
