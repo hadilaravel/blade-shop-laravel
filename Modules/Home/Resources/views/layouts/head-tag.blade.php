@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="{{ asset('home-assets/css/owl.carousel.min.css') }}" />
 <link rel="stylesheet" href=" {{ asset('home-assets/css/owl.theme.default.min.css') }}" />
 <!-- PRODUCT SLIDER CSS -->
+<link rel="stylesheet" type="text/css" href="{{ asset('home-assets/css/font-awesome/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href=" {{ asset('home-assets/css/swiper-bundle.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('home-assets/css/style.product.slider.css') }}" />
 <link rel="icon" type="image/x-icon" href="{{ asset($setting->icon) }}">

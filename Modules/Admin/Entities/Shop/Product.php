@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Entities\Shop;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -78,6 +79,11 @@ class Product extends Model
     public function activeComments()
     {
         return $this->comments()->where('status' , 1)->whereNull('parent_id')->latest()->get();
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 
 }

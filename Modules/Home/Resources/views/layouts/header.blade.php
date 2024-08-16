@@ -163,7 +163,7 @@
                       @mouseleave="showChildren=false"
                       @mouseenter="showChildren=true">
                     <a
-                        href="./profile.html"
+                        href="{{ route('user.profile') }}"
                         class="px-2 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span
                           class="flex justify-center items-center opacity-90"
@@ -180,7 +180,7 @@
                       @mouseleave="showChildren=false"
                       @mouseenter="showChildren=true">
                     <a
-                        href="./profile-order.html"
+                        href=""
                         class="px-4 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span class="flex justify-center items-center text-sm opacity-90"
                       ><img
@@ -196,7 +196,7 @@
                       @mouseleave="showChildren=false"
                       @mouseenter="showChildren=true">
                     <a
-                        href="./profile-favorites.html"
+                        href="{{ route('user.profile.my-favorites') }}"
                         class="px-4 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span class="flex justify-center items-center text-sm opacity-90"
                       ><img
@@ -1009,16 +1009,16 @@
                                     <a href="./cart.html">
                                         <img
                                             class="inline ml-1 w-5"
-                                            src="./assets/image/shopping-cart.png"
+                                            src="{{ asset('home-assets/image/shopping-cart.png') }}"
                                             alt="" />سبد خرید</a
                                     >
                                 </div>
                                 <div
                                     class="md:flex justify-center align-middle lg:inline-block py-2 px-4 text-sm text-neutral-800 rounded-xl hover:text-neutral-700 hover:bg-red-100 transition">
-                                    <a href="./login-register.html"
+                                    @if(!auth()->check()) href="{{ route('auth.register.view') }}" @endif
                                     ><img
                                             class="inline ml-1 w-5"
-                                            src="./assets/image/user.png"
+                                            src="{{ asset('home-assets/image/user.png') }}"
                                             alt="" />ورود | ثبت نام</a
                                     >
                                 </div>

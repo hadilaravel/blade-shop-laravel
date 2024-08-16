@@ -177,7 +177,7 @@ return [
         'height' => 'ارتفاع',
         'price' => 'قیمت',
         'introduction' => 'توضیحات',
-        'unit' => 'واحد اندازه گیری',
+        'unit' => 'واحد ',
         'receiver' => 'تحویل گیرنده',
         'deliverer' => 'تحویل دهنده',
         'marketable_number' => 'تعداد',
