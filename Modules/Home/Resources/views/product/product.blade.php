@@ -18,7 +18,7 @@
               <span class="flex items-center pr-20 pb-2">
                   @auth
                       @if($product->users->contains(auth()->user()->id))
-                      <section class="product-add-to-favorite">
+                          <section class="product-add-to-favorite">
                                  <a class="aAddFavorits" href="{{ route('user.profile.add-to-favorite' , $product) }}"    data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
                                        <i style="color: red" class="fa fa-heart"></i>
                                    </a>
@@ -51,14 +51,14 @@
                                     @php
                                         $pi += 1;
                                     @endphp
-                                <img class="mySlides rounded-xl md:rounded-3xl" src="{{ asset($image) }}" style="width:100%;display: {{ $pi == 1 ? 'block' : 'none' }}">
+                                    <img class="mySlides rounded-xl md:rounded-3xl" src="{{ asset($image) }}" style="width:100%;display: {{ $pi == 1 ? 'block' : 'none' }}">
                                 @endforeach
 
                             </div>
                             <div class="flex justify-around gap-x-4 mt-3">
                                 @foreach ($images as $image)
                                     @php
-                                    $key += 1;
+                                        $key += 1;
                                     @endphp
                                     <div class="max-w-[80px]">
                                         <img class="rounded-xl opacity-70 hover:opacity-100 transition"
@@ -72,6 +72,8 @@
                         <div class="opacity-80 text-lg font-semibold">
                             {{ $product->name }}
                         </div>
+                        <form action="{{ route('user.profile.add-to-cart' , $product->slug) }}" id="add_to_cart_form" method="post">
+                            @csrf
                         <div class="md:flex sm:pr-7">
                             <div class="md:w-2/3">
                                 @php
@@ -94,6 +96,7 @@
                                                             >
                                                                 <input
                                                                     id="color_{{ $color->id }}"
+                                                                    value="{{ $color->id }}"
                                                                     name="color"
                                                                     data-color-name="{{ $color->name }}"
                                                                     data-color-price={{ $color->price_increase }}
@@ -157,7 +160,7 @@
                                                 <select name="guarantee" id="guarantee" >
                                                     @foreach ($guarantees as $key => $guarantee)
                                                         <option value="{{ $guarantee->id }}"
-                                                                data-guarantee-price={{ $guarantee->price_increase }}  @if($key == 0) selected @endif>{{ $guarantee->name }}</option>
+                                                                data-guarantee-name="{{ $guarantee->name }}"  id="optionGuarantee"  data-guarantee-price="{{ $guarantee->price_increase }}"  @if($key == 0) selected @endif>{{ $guarantee->name }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -169,6 +172,7 @@
                                 </div>
                             </div>
                             <div class="md:w-2/5 mt-5 md:mt-0">
+                                @if($product->marketable == 1)
                                 <div class="pb-5 rounded-2xl shadow-xl border">
                                     <div class="flex justify-between px-3 py-5">
                                         <div class="text-right opacity-80 text-sm flex flex-col gap-y-6">
@@ -182,43 +186,87 @@
                                                 قیمت:
                                             </div>
                                             <div>
+                                                تخفیف:
+                                            </div>
+                                            <div>
+                                                قیمت نهایی :
+                                            </div>
+                                            <div>
                                                 تعداد:
                                             </div>
                                         </div>
                                         <div class="text-left opacity-70 text-sm flex flex-col gap-y-6">
-                                            <div>
-                                                6 ماهه تمام
+                                            <div id="guarantee_name">
                                             </div>
                                             <div>
-                                                7 عدد
+                                                {{ $product->marketable_number }} عدد
                                             </div>
                                             <div class="flex text-red-500">
-                                                <div>
-                                                    21,000,000
+                                                <div data-product-original-price="{{ $product->price }}" id="product_price">
+                                                    {{ priceFormat($product->price) }}
                                                 </div>
                                                 <div>
                                                     تومان
                                                 </div>
                                             </div>
-                                            <div
-                                                class="flex text-sm sm:text-sm items-center justify-center lg:justify-start">
+                                            @php
+
+                                                $amazingSale = $product->activeAmazingSales();
+
+                                            @endphp
+                                            @if(!empty($amazingSale))
+                                            <div class="flex text-red-500">
+                                                <div  data-product-discount-price="{{ ($product->price * ($amazingSale->percentage / 100) ) }}" id="product-discount-price">
+                                                    {{ priceFormat($product->price * ($amazingSale->percentage / 100) ) }}
+                                                </div>
+                                                <div>
+                                                    تومان
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            <div class="flex text-red-500">
+                                                <div id="final-price">
+                                                </div>
+                                                <div>
+                                                    تومان
+                                                </div>
+                                            </div>
+
+                                            <div class="flex text-sm sm:text-sm items-center justify-center lg:justify-start">
                                                 <div class="flex items-center justify-center select-none">
-                                                    <div class="quantity flex items-center">
-                                                        <input
-                                                            class="w-12 h-7 mx-2 text-center border focus:outline-none rounded-lg"
-                                                            type="number" min="1" step="1" value="1" readonly>
+                                                    <div class="divkk">
+                                                    <button class="cart-number cart-number-down" type="button">-</button>
+                                                    <input type="number" id="number" name="number" min="1" max="5" step="1" value="1" readonly="readonly"/>
+                                                    <button class="cart-number cart-number-up" type="button">+</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <span class="flex justify-center items-center opacity-90">
-                    <button
-                        class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">افزودن به سبد خرید</button>
-                  </span>
+                                        @if($product->marketable_number > 0)
+                                            @if(auth()->check())
+                                              <button  onclick="document.getElementById('add_to_cart_form').submit();" class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">افزودن به سبد خرید</button>
+                                            @else
+                                                <p>
+                                               کاربر گرامی لطفا برای افزودن به سبد خرید ابتدا وارد حساب کاربری خود شوید
+                                              <a style="color: red" href="{{ route('auth.login.view') }}">کلیک کنید</a>
+                                             </p>
+                                            @endif
+                                        @else
+                                            <p>محصول ناموجود میباشد</p>
+                                        @endif
+                                      </span>
                                 </div>
+                                @else
+                                    <span class="flex justify-center items-center opacity-90">
+                                    <p style="background-color: gray;margin-top: 30px" class="px-7 py-2 text-center text-white align-middle border-0 rounded-lg shadow-md text-sm">محصول قابل فروش نیست</p>
+                                    </span>
+                                @endif
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="flex justify-around my-5">
@@ -304,107 +352,17 @@
               </span>
                             <div class="text-gray-500 text-sm grid grid-cols-1 gap-x-3 md:grid-cols-2">
                                 @foreach($product->metas as $meta)
-                                <div
-                                    class="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
-                                    <div class="text-xs opacity-80">
-                                         {{ $meta->meta_key }}:
+                                    <div
+                                        class="flex items-center justify-between bg-gray-100 p-3 w-full my-3 mx-auto rounded-xl">
+                                        <div class="text-xs opacity-80">
+                                            {{ $meta->meta_key }}:
+                                        </div>
+                                        <div class="text-xs opacity-70">
+                                            {{ $meta->meta_value }}
+                                        </div>
                                     </div>
-                                    <div class="text-xs opacity-70">
-                                           {{ $meta->meta_value }}
-                                    </div>
-                                </div>
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl hidden" id="commentsBuy" role="tabpanel"
-                             aria-labelledby="commentsBuy-tab">
-              <span class="border-b-red-500 border-b">
-                دیدگاه های محصول
-              </span>
-                            <p class="text-gray-500 text-sm">
-                            <div class="flex flex-col py-4 px-4 mx-auto my-6 max-w-7xl rounded-2xl bg-white">
-                                <!-- UO COMMENTS -->
-                                <div>
-                                    <div>دیدگاه ها</div>
-                                    <div class="opacity-70 text-xs">1 دیدگاه</div>
-                                </div>
-                                <!-- COMMENT -->
-                                <div class="bg-gray-50 rounded-xl px-3 sm:px-5 py-3 my-2">
-                                    <div class="flex flex-col items-stat gap-y-2">
-                                        <div class="flex items-center">
-                                            <div class="text-green-400 bg-green-100 px-1 rounded-md text-sm">
-                                                4.7
-                                            </div>
-                                            <div class="text-xs opacity-60 pr-1">
-                                                ارسال شده توسط امیررضا کریمی
-                                            </div>
-                                            <div class="text-xs opacity-60 pr-1">
-                                                1402/05/12
-                                            </div>
-                                        </div>
-                                        <span
-                                            class="text-green-400 bg-green-100 px-1 w-24 rounded-md text-sm text-center">
-                        پیشنهاد شده
-                      </span>
-                                    </div>
-                                    <div>
-                                        <div class="opacity-60 text-sm py-3">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                            لازم است.
-                                        </div>
-                                        <div class="flex flex-col gap-y-2">
-                                            <div class="flex text-green-400 text-xs">
-                                                <div>
-                                                    +
-                                                </div>
-                                                <div>
-                                                    طراحی زیبا
-                                                </div>
-                                            </div>
-                                            <div class="flex text-green-400 text-xs">
-                                                <div>
-                                                    +
-                                                </div>
-                                                <div>
-                                                    خوش دستی
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col gap-y-2 mt-2">
-                                            <div class="flex text-red-400 text-xs">
-                                                <div>
-                                                    -
-                                                </div>
-                                                <div>
-                                                    وزن زیاد
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-x-4 justify-end">
-                                        <a href="" class="flex">
-                                            <span>5</span>
-                                            <svg class="hover:fill-green-600" xmlns="http://www.w3.org/2000/svg"
-                                                 width="20" height="20" fill="#797979" viewBox="0 0 256 256">
-                                                <path
-                                                    d="M232.49,81.44A22,22,0,0,0,216,74H158V56a38,38,0,0,0-38-38,6,6,0,0,0-5.37,3.32L76.29,98H32a14,14,0,0,0-14,14v88a14,14,0,0,0,14,14H204a22,22,0,0,0,21.83-19.27l12-96A22,22,0,0,0,232.49,81.44ZM30,200V112a2,2,0,0,1,2-2H74v92H32A2,2,0,0,1,30,200ZM225.92,97.24l-12,96A10,10,0,0,1,204,202H86V105.42l37.58-75.17A26,26,0,0,1,146,56V80a6,6,0,0,0,6,6h64a10,10,0,0,1,9.92,11.24Z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                        <a href="" class="flex">
-                                            <span>1</span>
-                                            <svg class="hover:fill-red-600" xmlns="http://www.w3.org/2000/svg"
-                                                 width="20" height="20" fill="#797979" viewBox="0 0 256 256">
-                                                <path
-                                                    d="M237.83,157.27l-12-96A22,22,0,0,0,204,42H32A14,14,0,0,0,18,56v88a14,14,0,0,0,14,14H76.29l38.34,76.68A6,6,0,0,0,120,238a38,38,0,0,0,38-38V182h58a22,22,0,0,0,21.83-24.73ZM74,146H32a2,2,0,0,1-2-2V56a2,2,0,0,1,2-2H74Zm149.5,20.62A9.89,9.89,0,0,1,216,170H152a6,6,0,0,0-6,6v24a26,26,0,0,1-22.42,25.75L86,150.58V54H204a10,10,0,0,1,9.92,8.76l12,96A9.89,9.89,0,0,1,223.5,166.62Z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            </p>
                         </div>
                         <div class="bg-gray-50 p-4 rounded-xl hidden" id="comments" role="tabpanel"
                              aria-labelledby="comments-tab">
@@ -480,6 +438,12 @@
                                         </div>
                                         <button class="inline-block px-8 py-2 ml-auto font-semibold text-center text-white bg-red-500 rounded-lg shadow-md text-xs">ارسال نظر</button>
                                     </form>
+                                @else
+                                    <p>
+                                        کاربر گرامی لطفا برای ثبت نظر ابتدا وارد حساب کاربری خود شوید
+                                        <a style="color: red" href="{{ route('auth.login.view') }}">کلیک کنید</a>
+                                    </p>
+
                                 @endif
                             </div>
                             </p>
@@ -517,9 +481,9 @@
                     </span>
 
                       @php
-                            $amazingSale = $relatedProduct->activeAmazingSales();
-                              $totalDiscount = 0;
-                       @endphp
+                          $amazingSale = $relatedProduct->activeAmazingSales();
+                            $totalDiscount = 0;
+                      @endphp
                       @if(!empty($amazingSale))
                           @php
                               $totalDiscount = $relatedProduct->price * ($amazingSale->percentage / 100);
@@ -565,27 +529,37 @@
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
 
     <script>
-        $(document).ready(function () {
-            bill();
+        $(document).ready(function(){
             //input color
-            $('input[name="color"]').change(function () {
+            $('input[name="color"]').change(function(){
                 bill();
-            })
-            //guarantee
-            $('select[name="guarantee"]').change(function () {
-                bill();
-            })
-            //number
-            $('.cart-number').click(function () {
-                bill();
-            })
-        })
+                if($('input[name="color"]:checked').length != 0){
+                    var selected_color = $('input[name="color"]:checked');
+                    $("#selected_color_name").html(selected_color.attr('data-color-name'));
+                }
+            });
 
-        function bill() {
-            if ($('input[name="color"]:checked').length != 0) {
-                var selected_color = $('input[name="color"]:checked');
-                $("#selected_color_name").html(selected_color.attr('data-color-name'));
-            }
+            var guarantee_name = $('#guarantee option:selected');
+            $("#guarantee_name").html(guarantee_name.attr('data-guarantee-name'));
+
+            $('select[name="guarantee"]').change(function(){
+                bill();
+                if($('#guarantee option:selected').length != 0)
+                 {
+                   var guarantee_name = $('#guarantee option:selected');
+                   $("#guarantee_name").html(guarantee_name.attr('data-guarantee-name'));
+                 }
+            });
+
+            //number
+            $('.cart-number').click(function(){
+                bill();
+            })
+
+        });
+
+        function bill()
+        {
 
             //price computing
             var selected_color_price = 0;
@@ -594,30 +568,39 @@
             var product_discount_price = 0;
             var product_original_price = parseFloat($('#product_price').attr('data-product-original-price'));
 
-            if ($('input[name="color"]:checked').length != 0) {
+            if($('input[name="color"]:checked').length != 0)
+            {
+                var selected_color = $('input[name="color"]:checked');
                 selected_color_price = parseFloat(selected_color.attr('data-color-price'));
             }
 
-            if ($('#guarantee option:selected').length != 0) {
+            // console.log('price color :' + selected_color_price)
+
+            if($('#guarantee option:selected').length != 0)
+            {
                 selected_guarantee_price = parseFloat($('#guarantee option:selected').attr('data-guarantee-price'));
             }
 
-            if ($('#number').val() > 0) {
+            if($('#number').val() > 0)
+            {
                 number = parseFloat($('#number').val());
             }
 
-            if ($('#product-discount-price').length != 0) {
+            if($('#product-discount-price').length != 0)
+            {
                 product_discount_price = parseFloat($('#product-discount-price').attr('data-product-discount-price'));
             }
 
-            //final price
             var product_price = product_original_price + selected_color_price + selected_guarantee_price;
             var final_price = number * (product_price - product_discount_price);
-            $('#product-price').html(toFarsiNumber(product_price));
+            $('#product-price').html(toFarsiNumber(product_price) );
             $('#final-price').html(toFarsiNumber(final_price));
+
         }
 
-        function toFarsiNumber(number) {
+
+        function toFarsiNumber(number)
+        {
             const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
             // add comma
             number = new Intl.NumberFormat().format(number);
@@ -626,75 +609,6 @@
         }
 
     </script>
-
-
-    <script>
-        $('.product-add-to-favorite button').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'حذف از علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'حذف از علاقه مندی ها');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'افزودن از علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'افزودن از علاقه مندی ها');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
-            })
-        })
-    </script>
-
-    <script>
-        $('.product-add-to-compare button').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'حذف از  مقایسه ها');
-                        $(element).attr('data-bs-original-title', 'حذف از  مقایسه ها');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'افزودن به  مقایسه ها');
-                        $(element).attr('data-bs-original-title', 'افزودن به  مقایسه ها');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
-            })
-        })
-    </script>
-
-
-    <script>
-
-        //start product introduction, features and comment
-        $(document).ready(function () {
-            var s = $("#introduction-features-comments");
-            var pos = s.position();
-            $(window).scroll(function () {
-                var windowpos = $(window).scrollTop();
-
-                if (windowpos >= pos.top) {
-                    s.addClass("stick");
-                } else {
-                    s.removeClass("stick");
-                }
-            });
-        });
-        //end product introduction, features and comment
-
-    </script>
-
 
 
 @endsection

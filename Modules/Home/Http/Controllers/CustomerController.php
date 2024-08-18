@@ -121,4 +121,20 @@ class CustomerController extends Controller
         return to_route('user.profile.my-address');
     }
 
+    public function myAddressEdit(Address $address)
+    {
+        $cities = City::all();
+        $provinces = Province::all();
+        return view('home::customer.address-edit' , compact('cities' , 'provinces' , 'address'));
+    }
+
+    public function myAddressUpdate(AddressRequest $request , Address $address)
+    {
+        $inputs = $request->all();
+        $inputs['user_id'] = \auth()->id();
+        $address->update($inputs);
+        alert()->success('آدرس شما با موفقیت ویرایش شد');
+        return to_route('user.profile.my-address');
+    }
+
 }

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                    <a href="{{ route('admin.blog.label.index') }}" class="btn btn-info btn-sm">بازگشت</a>
+                    <a href="{{ route('admin.blog.faq.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
                 <div class="card">
                     <div class="card-body">

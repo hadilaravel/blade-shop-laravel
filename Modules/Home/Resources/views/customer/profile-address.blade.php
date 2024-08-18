@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <span class="opacity-90">
-              <a href="" class="px-7 py-2 text-center text-white bg-blue-500 align-middle border-0 rounded-lg shadow-md text-sm">ویرایش آدرس</a>
+              <a href="{{ route('user.profile.my-address.edit' , $address->id) }}" class="px-7 py-2 text-center text-white bg-blue-500 align-middle border-0 rounded-lg shadow-md text-sm">ویرایش آدرس</a>
               <a  href="{{ route('user.profile.my-address.delete' , $address->id) }}" class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">حذف</a>
             </span>
                     </div>

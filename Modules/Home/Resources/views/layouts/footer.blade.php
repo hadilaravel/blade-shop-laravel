@@ -85,7 +85,7 @@
                         </li>
                         <li>
                             <a
-                                href="./faq.html"
+                                href="{{ route('home.faq') }}"
                                 class="mb-2 text-sm hover:text-red-600 transition opacity-60 hover:opacity-100"
                             >
                                 سوالات متداول

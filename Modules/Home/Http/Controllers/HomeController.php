@@ -10,6 +10,7 @@ use Modules\Admin\Entities\Blog\Post;
 use Modules\Admin\Entities\Setting\Setting;
 use Modules\Admin\Entities\Shop\Banner;
 use Modules\Admin\Entities\Shop\Brand;
+use Modules\Admin\Entities\Shop\Faq;
 use Modules\Admin\Entities\Shop\Product;
 use Modules\Admin\Entities\Shop\ProductCategory;
 
@@ -54,5 +55,10 @@ class HomeController extends Controller
         return view('home::blog.posts' ,  compact('postNews' , 'postBoxs' ,'posts'));
     }
 
+    public function faq()
+    {
+        $faqs = Faq::query()->where('status' , 1)->get();
+        return view('home::home.faq' , compact('faqs'));
+    }
 
 }

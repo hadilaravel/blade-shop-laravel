@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Admin\Entities\Shop\Address;
+use Modules\Admin\Entities\Shop\CartItem;
 use Modules\Admin\Entities\Shop\Order;
 use Modules\Admin\Entities\Shop\Product;
 
@@ -70,6 +71,11 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
     }
 
 }

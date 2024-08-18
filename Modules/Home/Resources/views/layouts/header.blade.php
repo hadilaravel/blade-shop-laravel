@@ -234,7 +234,7 @@
                 @mouseenter="showChildren=true"
                 @mouseleave="showChildren=false">
             <a
-                href=""
+                href="{{ route('user.profile.cart-item') }}"
                 class="flex items-center h-10 leading-10 px-3 cursor-pointer no-underline hover:no-underline duration-100 mx-1 transition rounded-xl hover:bg-red-100">
               <img
                   class="inline ml-1 w-5"
@@ -262,28 +262,32 @@
                 @mouseleave="showChildren=false">
               <div class="bg-white rounded-2xl w-full relative z-10 py-2 px-2">
                 <ul class="list-reset flex flex-col gap-y-2">
-
+                        @php
+                            $totalProductPrice = 0;
+                            $totalDiscount = 0;
+                        @endphp
+                    @foreach(auth()->user()->cartItems as $cartItem)
                   <li
                       class="relative">
                     <a
-                        href="./single-product.html"
+                        href="{{ route('home.product.detail' , $cartItem->product->slug) }}"
                         class="px-2 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span class="flex justify-center items-center opacity-90">
                         <div class="flex">
                           <img
                               class="w-14 ml-2 rounded-lg"
-                              src=""
+                              src="{{ asset($cartItem->product->image) }}"
                               alt="" />
                           <div class="flex flex-col flex-wrap gap-y-1 justify-center">
                             <div class="opacity-80 w-full text-sm">
-                              کوله پشتی مدل ایستاده
+                              {{ $cartItem->product->name }}
                             </div>
                             <div class="flex opacity-75 text-xs">
                               <div>
                                 قیمت:
                               </div>
                               <div>
-                                700,000
+                              {{ priceFormat($cartItem->cartItemFinalPrice() ) }}
                               </div>
                               <div>
                                 تومان
@@ -297,11 +301,11 @@
                       </span>
                     </a>
                   </li>
-
+                    @endforeach
                   <li
                       class="relative">
                     <a
-                        href="./checkout.html"
+                        href="{{ route('user.profile.cart-item') }}"
                         class="px-2 py-2 flex w-full items-start justify-center">
                       <span class="flex justify-center items-center opacity-90">
                         <button class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-xs">تسویه حساب</button>

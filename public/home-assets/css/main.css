@@ -544,3 +544,28 @@ input[type="range"]::-moz-range-thumb {
 .aAddFavorits i{
     font-size: 30px;
 }
+
+.divkk{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.cart-number-down , .cart-number-up {
+    margin: 0px 10px;
+    border: none;
+    width: 1.5rem;
+    text-align: center;
+    background-color: red;
+    color: #FFFFFF;
+    padding-top: 0.2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    transition: 0.4s;
+}
+
+.cart-number-down:hover , .cart-number-up:hover {
+    background-color: rgb(28, 174, 255);
+    transition: 0.4s;
+}

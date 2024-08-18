@@ -51,7 +51,7 @@
                                     <img src="{{ asset($product->image) }}" class="w-48 md:w-32 max-w-full max-h-full rounded-lg" alt="{{ $product->name }}">
                                 </td>
                                 <td class="md:pr-6 py-4 text-sm opacity-90 text-gray-900">
-                                   {{ $product->name }}
+                                   {{ \Illuminate\Support\Str::limit($product->name , 30) }}
                                 </td>
                                 <td class="px-6 py-4 text-sm opacity-90 text-gray-900">
                                     @php
