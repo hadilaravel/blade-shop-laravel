@@ -21,6 +21,10 @@ Route::get('product/{product:slug}' , [HomeController::class , 'product'])->name
 Route::get('post/{post:slug}' , [HomeController::class , 'post'] )->name('home.post.detail');
 Route::get('posts' , [HomeController::class , 'posts'])->name('home.post.all');
 Route::get('faq' , [HomeController::class  , 'faq'])->name('home.faq');
+Route::get('about' , [HomeController::class  , 'about'])->name('home.about');
+
+Route::get('products/{category?}' , [HomeController::class , 'products'])->name('home.products');
+
 
 // product comment
 Route::middleware('throttle:2,2')->post('comment/product/{product}' , [\Modules\Admin\Http\Controllers\Blog\CommentPostController::class , 'storeCommentProduct'])->name('home.comments.product.store');

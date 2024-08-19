@@ -44,6 +44,7 @@ class Permission extends Model
     public Const PermissionTicket = 'PermissionTicket';
     public Const PermissionSetting = 'PermissionSetting';
     public Const PermissionBanner = 'PermissionBanner';
+    public Const PermissionAbout = 'PermissionAbout';
 
 
 
@@ -70,6 +71,7 @@ class Permission extends Model
         self::PermissionTicket,
         self::PermissionSetting,
         self::PermissionBanner,
+        self::PermissionAbout,
     ];
 
 
@@ -79,6 +81,9 @@ class Permission extends Model
         {
             case 'PermissionRole':
                 return 'دسترسی به سطوح دسترسی';
+                break;
+            case 'PermissionAbout':
+                return 'دسترسی به درباره ما';
                 break;
             case 'PermissionCategoryProduct':
                 return 'دسترسی به دسته بندی محصول';

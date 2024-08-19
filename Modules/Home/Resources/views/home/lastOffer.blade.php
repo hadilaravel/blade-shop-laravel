@@ -1,6 +1,6 @@
 <div class="flex justify-between px-5 py-5 rounded-xl md:px-10 items-center mt-10 mb-2 bg-white">
     <div class="border-b-2 border-red-500 pb-1">آخرین پیشنهاد</div>
-    <a href="#"><div class="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">دیدن همه<img class="w-4" src="{{ asset('home-assets/image/arrow-left.png') }}" alt=""></div></a>
+    <a href="{{ route('home.products' , ['sort' => 1]) }}"><div class="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">دیدن همه<img class="w-4" src="{{ asset('home-assets/image/arrow-left.png') }}" alt=""></div></a>
 </div>
 <div class="lg:flex items-start gap-5">
     <div class="lg:w-1/3 mb-5 gap-5 lg:mb-0 grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:block">

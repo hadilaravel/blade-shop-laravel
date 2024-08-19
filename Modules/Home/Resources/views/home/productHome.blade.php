@@ -2,7 +2,7 @@
     <!-- TOP SLIDER -->
     <div class="flex justify-between px-5 md:px-10 items-center">
         <div class="border-b-2 border-red-500 pb-1">محصولات</div>
-        <a href=""><div class="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">دیدن همه<img class="w-4" src="{{ asset('home-assets/image/arrow-left.png') }}" alt=""></div></a>
+        <a href="{{ route('home.products') }}"><div class="transition px-4 py-2 rounded-xl flex justify-center items-center text-red-500 hover:text-red-600">دیدن همه<img class="w-4" src="{{ asset('home-assets/image/arrow-left.png') }}" alt=""></div></a>
     </div>
     <!-- SLIDER -->
     <div class="containerPSlider swiper">

@@ -69,18 +69,10 @@
                         </li>
                         <li>
                             <a
-                                href="./aboute-me.html"
+                                href="{{ route('home.about') }}"
                                 class="mb-12 text-sm hover:text-red-600 transition opacity-60 hover:opacity-100"
                             >
                                 درباره ما
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="./index.html"
-                                class="mb-2 text-sm hover:text-red-600 transition opacity-60 hover:opacity-100"
-                            >
-                                پیگیری سفارش
                             </a>
                         </li>
                         <li>
@@ -93,7 +85,7 @@
                         </li>
                         <li>
                             <a
-                                href="./blog.html"
+                                href="{{ route('home.post.all') }}"
                                 class="mb-2 text-sm hover:text-red-600 transition opacity-60 hover:opacity-100"
                             >
                                 بلاگ

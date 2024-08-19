@@ -184,6 +184,16 @@
                 </li>
                 @endpermission
 
+                @permission('PermissionAbout')
+                <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
+                           درباره ما
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('admin.about.index') }}"><i class="icon-layers"></i><span data-i18n=""
+                                                                                                                          class="menu-title">درباره ما</span></a>
+                </li>
+                @endpermission
+
                 @permission('PermissionNotify')
                 <li class=" nav-item liClass" ><a ><span  data-i18n="" class="menu-title spanish">
                            اطلاع رسانی

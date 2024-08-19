@@ -8,14 +8,16 @@
         </a>
         <div class="order-3 w-full mt-3 lg:mt-0 lg:w-5/12 lg:mr-[10%]">
             <div class="relative">
+                <form id="formSearch" action="{{ route('home.products' ,  request()->category ? request()->category->id : null) }}" method="get">
                 <input
                     type="search"
+                    value="{{ request()->search }}" name="search"
                     id="default-search"
                     class="sm:block w-full px-4 py-3 sm:pl-12 text-sm sm:text-base pl-8 text-red-900 placeholder:text-red-600 rounded-2xl text-right placeholder:text-sm focus:outline-red-400 border-2 border-red-400"
                     placeholder="جستجو محصول"
-                    onfocus="showModalSearch()"/>
-                <div
-                    class="absolute inset-y-0 left-0 flex items-center pl-4">
+                    autocomplete="off">
+                </form>
+                <div class="absolute inset-y-0 left-0 flex items-center pl-4"  onclick="document.getElementById('formSearch').submit();">
                     <img class="w-5 h-5 text-gray-500" src="{{ asset('home-assets/image/search.png') }}" alt="" />
                 </div>
                 <div class="absolute w-full bg-gray-50 shadow-2xl h-auto mt-2 z-50 rounded-2xl hidden" id="showModalSearch">
@@ -269,8 +271,7 @@
                     @foreach(auth()->user()->cartItems as $cartItem)
                   <li
                       class="relative">
-                    <a
-                        href="{{ route('home.product.detail' , $cartItem->product->slug) }}"
+                    <a href="{{ route('home.product.detail' , $cartItem->product->slug) }}"
                         class="px-2 py-2 flex w-full items-start hover:bg-red-50 rounded-xl">
                       <span class="flex justify-center items-center opacity-90">
                         <div class="flex">
@@ -280,7 +281,7 @@
                               alt="" />
                           <div class="flex flex-col flex-wrap gap-y-1 justify-center">
                             <div class="opacity-80 w-full text-sm">
-                              {{ $cartItem->product->name }}
+                              {{ \Illuminate\Support\Str::limit($cartItem->product->name , 50) }}
                             </div>
                             <div class="flex opacity-75 text-xs">
                               <div>
@@ -294,9 +295,11 @@
                               </div>
                             </div>
                           </div>
+                            <a href="{{ route('user.profile.remove-cart' , $cartItem->id) }}">
                           <span class="text-red-400 hover:text-red-500 bg-red-100 hover:bg-red-200 px-2 text-xl font-bold h-7 rounded-full cursor-pointer absolute left-2 top-5">
                             ×
                           </span>
+                            </a>
                         </div>
                       </span>
                     </a>

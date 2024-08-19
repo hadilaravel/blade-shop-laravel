@@ -34,7 +34,7 @@ use Modules\Admin\Http\Controllers\Setting\SettingController;
 use Modules\Admin\Http\Controllers\Setting\ContactController;
 use Modules\Admin\Http\Controllers\Setting\SocialController;
 use Modules\Admin\Http\Controllers\Shop\BannerController;
-
+use Modules\Admin\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +51,12 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
 
     Route::get('/' , [\Modules\Admin\Http\Controllers\AdminController::class , 'index' ])->name('admin.index');
 
+    //         about
+    Route::middleware('permission:PermissionAbout')->prefix('about')->group(function () {
+        Route::get('/', [AboutController::class, 'index'])->name('admin.about.index');
+        Route::get('edit/{about}', [AboutController::class, 'edit'])->name('admin.about.edit');
+        Route::put('update/{about}', [AboutController::class, 'update'])->name('admin.about.update');
+    });
 
     Route::prefix('user')->group(function (){
 
