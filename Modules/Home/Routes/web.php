@@ -4,6 +4,8 @@ use \Illuminate\Support\Facades\Route;
 use Modules\Home\Http\Controllers\HomeController;
 use Modules\Home\Http\Controllers\CustomerController;
 use Modules\Home\Http\Controllers\CartController;
+use Modules\Home\Http\Controllers\PaymentController;
+use Modules\Home\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +57,22 @@ Route::middleware('auth')->prefix('user/profile')->group(function() {
     Route::get('my-favorites/delete/{product}' , [CustomerController::class , 'deleteFavorite'])->name('user.profile.my-favorites.delete');
     Route::get('add-to-favorite/product/{product}' , [CustomerController::class , 'addToFavorite'] )->name('user.profile.add-to-favorite');
 
+//    cart item
     Route::post('add-to-cart/{product:slug}' , [CartController::class , 'addToCart'])->name('user.profile.add-to-cart');
     Route::get('cart-items' , [CartController::class , 'cartItems'])->name('user.profile.cart-item');
     Route::get('remove-from-cart/{cartItem}' , [CartController::class , 'removeFromCart'])->name('user.profile.remove-cart');
+
+//    ticket
+    Route::get('my-tickets' , [TicketController::class , 'tickets'])->name('user.profile.tickets');
+    Route::get('my-ticket/create' , [TicketController::class , 'create'])->name('user.profile.tickets.create');
+    Route::post('my-ticket/store' , [TicketController::class , 'store'])->name('user.profile.tickets.store');
+    Route::get('my-ticket/edit/{ticket}' , [TicketController::class , 'edit'])->name('user.profile.tickets.edit');
+    Route::put('my-ticket/update/{ticket}' , [TicketController::class , 'update'])->name('user.profile.tickets.update');
+    Route::get('my-ticket/delete/{ticket}' , [TicketController::class , 'delete'])->name('user.profile.tickets.delete');
+    Route::get('my-ticket/show/{ticket}' , [TicketController::class , 'show'])->name('user.profile.tickets.show');
+
+//    payment
+    Route::get('payment' , [PaymentController::class , 'payment'])->name('user.profile.payment');
 
 
 });

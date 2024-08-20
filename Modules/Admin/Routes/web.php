@@ -156,7 +156,6 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::get('/', [PaymentController::class, 'index'])->name('admin.shop.payment.index');
             Route::get('online', [PaymentController::class, 'online'])->name('admin.shop.payment.online');
             Route::get('show/{payment}', [PaymentController::class, 'show'])->name('admin.shop.payment.show');
-            Route::get('offline', [PaymentController::class, 'offline'])->name('admin.shop.payment.offline');
             Route::get('cash', [PaymentController::class, 'cash'])->name('admin.shop.payment.cash');
             Route::get('canceled/{payment}', [PaymentController::class, 'canceled'])->name('admin.shop.payment.canceled');
             Route::get('returned/{payment}', [PaymentController::class, 'returned'])->name('admin.shop.payment.returned');

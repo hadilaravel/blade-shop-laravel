@@ -106,6 +106,7 @@ class TicketController extends Controller
         if($ticket->ticket_id == null)
         {
             $ticket->seen = 1;
+            $ticket->status = 1;
             $ticket->save();
          Ticket::query()->create([
            'title' => 'پاسخ',

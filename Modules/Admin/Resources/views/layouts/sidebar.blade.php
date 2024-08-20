@@ -65,7 +65,6 @@
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.shop.payment.index') }}" class="menu-item">تمام پرداخت ها</a></li>
                         <li><a href="{{ route('admin.shop.payment.online') }}" class="menu-item"> پرداخت های آنلاین</a></li>
-                        <li><a href="{{ route('admin.shop.payment.offline') }}" class="menu-item">پرداخت های آفلاین</a></li>
                         <li><a href="{{ route('admin.shop.payment.cash') }}" class="menu-item">پرداخت در محل</a></li>
                     </ul>
                 </li>

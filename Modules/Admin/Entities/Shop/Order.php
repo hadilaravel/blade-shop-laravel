@@ -65,9 +65,6 @@ class Order extends Model
                 $result = 'آنلاین';
                 break;
             case 1:
-                $result = 'آفلاین';
-                break;
-            default :
                 $result = 'در محل';
                 break;
         }

@@ -16,12 +16,6 @@ class PaymentController extends Controller
         $payments = Payment::all();
         return view('admin::shop.payment.index' , compact('payments' , 'title'));
     }
-    public function offline()
-    {
-        $title = 'پرداخت های آفلاین';
-        $payments = Payment::query()->where('paymentable_type' , 'Modules\Admin\Entities\Shop\OfflinePayment')->get();
-        return view('admin::shop.payment.index' , compact('payments' , 'title'));
-    }
     public function online()
     {
         $title = 'پرداخت های آنلاین';
