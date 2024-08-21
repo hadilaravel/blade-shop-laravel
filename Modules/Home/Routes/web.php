@@ -71,8 +71,14 @@ Route::middleware('auth')->prefix('user/profile')->group(function() {
     Route::get('my-ticket/delete/{ticket}' , [TicketController::class , 'delete'])->name('user.profile.tickets.delete');
     Route::get('my-ticket/show/{ticket}' , [TicketController::class , 'show'])->name('user.profile.tickets.show');
 
+    Route::get('choose-address-and-delivery' , [CustomerController::class , 'chooseAddressAndDelivery'])->name('user.profile.choose-address-and-delivery');
+    Route::post('choose-address-and-delivery/store' , [CustomerController::class , 'chooseAddressAndDeliveryStore'])->name('user.profile.choose-address-and-delivery.store');
+
 //    payment
     Route::get('payment' , [PaymentController::class , 'payment'])->name('user.profile.payment');
+    Route::post('copan-discount' , [PaymentController::class , 'copanDiscount'])->name('user.profile.copan-discount');
+    Route::post('payment-submit' , [PaymentController::class , 'paymentSubmit'])->name('user.profile.payment-submit');
+    Route::any('payment-callback/{order}/{onlinePayment}' , [PaymentController::class , 'paymentCallback'])->name('user.profile.payment-call-back');
 
 
 });

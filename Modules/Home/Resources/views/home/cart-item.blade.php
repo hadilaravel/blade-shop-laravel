@@ -76,8 +76,8 @@
                     </div>
                 </div>
             </div>
-            <a href="./checkout.html" class="flex justify-center items-center opacity-90 my-5">
-                <button class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">تایید و پرداخت</button>
+            <a href="{{ route('user.profile.choose-address-and-delivery') }}" class="flex justify-center items-center opacity-90 my-5">
+                <button class="px-7 py-2 text-center text-white bg-red-500 align-middle border-0 rounded-lg shadow-md text-sm">تایید و مرحله بعد </button>
             </a>
         </div>
     </div>

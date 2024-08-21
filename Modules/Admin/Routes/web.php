@@ -35,6 +35,7 @@ use Modules\Admin\Http\Controllers\Setting\ContactController;
 use Modules\Admin\Http\Controllers\Setting\SocialController;
 use Modules\Admin\Http\Controllers\Shop\BannerController;
 use Modules\Admin\Http\Controllers\AboutController;
+use Modules\Admin\Http\Controllers\SettingPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -409,6 +410,13 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::get('/', [SmsSettingController::class, 'index'])->name('admin.setting.sms-setting.index');
             Route::get('edit/{smsSetting}', [SmsSettingController::class, 'edit'])->name('admin.setting.sms-setting.edit');
             Route::put('update/{smsSetting}', [SmsSettingController::class, 'update'])->name('admin.setting.sms-setting.update');
+        });
+
+        //      payment setting
+        Route::prefix('payment-setting')->group(function () {
+            Route::get('/', [SettingPaymentController::class, 'index'])->name('admin.setting.payment-setting.index');
+            Route::get('edit/{settingPayment}', [SettingPaymentController::class, 'edit'])->name('admin.setting.payment-setting.edit');
+            Route::put('update/{settingPayment}', [SettingPaymentController::class, 'update'])->name('admin.setting.payment-setting.update');
         });
 
         //        social

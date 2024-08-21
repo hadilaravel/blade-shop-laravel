@@ -235,6 +235,9 @@
                 <li class=" nav-item"><a href="{{ route('admin.setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
                                                                                                                              class="menu-title">تنظیمات سایت</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('admin.setting.payment-setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
+                                                                                                                   class="menu-title">تنظیمات درگاه پرداخت</span></a>
+                </li>
                 <li class=" nav-item"><a href="{{ route('admin.setting.sms-setting.index') }}"><i class="fa fa-cogs"></i><span data-i18n=""
                                                                                                                               class="menu-title">تنظیمات ارسال پیامک</span></a>
                 </li>

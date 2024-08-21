@@ -569,3 +569,122 @@ input[type="range"]::-moz-range-thumb {
     background-color: rgb(28, 174, 255);
     transition: 0.4s;
 }
+
+.address-wrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+    border-radius: 0.25rem;
+    border: 2px solid #dedede;
+    background-color: #fcfcfc;
+    font-size: 0.8rem;
+    color: #333333;
+    transition: 0.4s;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.address-wrapper:hover {
+    border: 2px solid #00d2e2;
+    background-color: #efefef;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.address-selected {
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.4rem;
+    display: none;
+    color: #00b3c3;
+    font-size: 0.7rem;
+}
+
+.address-select input[type=radio]:checked + .address-wrapper {
+    /*background-color: #241009;*/
+    border-color: #00b3c3;
+    transition: 0.4s;
+}
+
+.address-select input[type=radio]:checked + .address-wrapper .address-selected {
+    display: inline-block;
+}
+
+.delivery-wrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+    border-radius: 0.25rem;
+    border: 2px solid #dedede;
+    background-color: #fcfcfc;
+    font-size: 0.8rem;
+    color: #333333;
+    transition: 0.4s;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.delivery-wrapper:hover {
+    border: 2px solid #00d2e2;
+    background-color: #efefef;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.delivery-select  input[type=radio] {
+    display: none;
+}
+
+.delivery-select input[type=radio]:checked + .delivery-wrapper {
+    border-color: #00b3c3;
+    transition: 0.4s;
+}
+
+.delivery-selected {
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.4rem;
+    display: none;
+    color: #00b3c3;
+    font-size: 0.7rem;
+}
+
+
+.payment-wrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+    border-radius: 0.25rem;
+    border: 2px solid #dedede;
+    background-color: #fcfcfc;
+    font-size: 0.8rem;
+    color: #333333;
+    transition: 0.4s;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.payment-wrapper:hover {
+    border: 2px solid #00d2e2;
+    background-color: #efefef;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.payment-select  input[type=radio] {
+    display: none;
+}
+
+.payment-select input[type=radio]:checked + .payment-wrapper {
+    border-color: #00b3c3;
+    transition: 0.4s;
+}
+
+.payment-selected {
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.4rem;
+    display: none;
+    color: #00b3c3;
+    font-size: 0.7rem;
+}

@@ -13,7 +13,8 @@
         "melipayamak/laravel": "1.0.0",
         "morilog/jalali": "3.*",
         "nwidart/laravel-modules": "10.00",
-        "realrashid/sweet-alert": "^7.2"
+        "realrashid/sweet-alert": "^7.2",
+        "shetabit/payment": "^5.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

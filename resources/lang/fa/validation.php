@@ -233,6 +233,7 @@ return [
         'commentable' => 'وضعیت نظر',
         'post_id' => 'پست',
         'meta_key' => 'ویژگی',
+        'payment_type' => 'نوع پرداخت',
         'meta_value' => 'مقدار',
     ],
 
