@@ -223,5 +223,25 @@ class CustomerController extends Controller
         return to_route('user.profile.payment');
     }
 
+    public function orders()
+    {
+        if(isset(request()->type))
+        {
+            $orders = auth()->user()->orders()->where('order_status' , request()->type )->orderBy('id', 'desc')->get();
+        }else {
+            $orders = auth()->user()->orders()->orderBy('id', 'desc')->get();
+        }
+        return view('home::customer.profile-orders' , compact('orders'));
+    }
+
+    public function orderDetail(Order $order)
+    {
+        if ($order->user_id == \auth()->id())
+        {
+            return view('home::customer.profile-order-detail' , compact('order'));
+        }else{
+            return  back();
+        }
+    }
 
 }

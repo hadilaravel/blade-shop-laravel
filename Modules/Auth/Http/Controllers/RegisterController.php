@@ -13,16 +13,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Melipayamak\MelipayamakApi;
 use Modules\Admin\Entities\Setting\Setting;
+use Modules\Admin\Entities\Setting\SettingEmail;
 use Modules\Admin\Entities\Setting\SmsSetting;
 use Modules\Auth\Entities\Otp;
 use Modules\Auth\Http\Requests\InformationRegisterRequest;
 use Modules\Auth\Http\Requests\RegisterRequest;
+use SoulDoit\SetEnv\Env;
+
 
 class RegisterController extends Controller
 {
 
     public function viewRegister()
     {
+        $settingEmail = SettingEmail::query()->first();
+        $envService = new Env();
+        $envService->set("MAIL_USERNAME", $settingEmail->name);
+        $envService->set("MAIL_PASSWORD", $settingEmail->password);
+
         $setting = Setting::query()->first();
         return view('auth::register' , compact('setting'));
     }
@@ -37,12 +45,13 @@ class RegisterController extends Controller
         {
             $type = 1; // 1 => email
             $user = User::query()->where('email', $inputs['id'])->first();
-            if(!empty($user)){
+            if(!empty($user) && !empty($user->email_verified_at)){
                 return back()->withErrors(['id' => 'ایمیل وارد شده تکراری است']);
             }
 
-            $newUser =  User::query()->create([
+            $newUser =  User::query()->firstOrCreate([
                 'email' => $inputs['id'],
+                'email' => $inputs['id']
             ]);
         }
 
@@ -56,10 +65,11 @@ class RegisterController extends Controller
             $inputs['id'] = str_replace('+98', '', $inputs['id']);
 
             $user = User::query()->where('mobile', $inputs['id'])->first();
-            if(!empty($user)){
+            if(!empty($user) && !empty($user->mobile_verified_at) ){
                 return back()->withErrors(['id' => 'شماره همراه وارد شده تکراری است']);
             }
-            $newUser =  User::query()->create([
+            $newUser =  User::query()->firstOrCreate([
+                'mobile' => $inputs['id'],
                 'mobile' => $inputs['id'],
             ]);
         }
@@ -197,6 +207,11 @@ class RegisterController extends Controller
         }
         elseif($otp->type === 1 )
         {
+            $settingEmail = SettingEmail::query()->first();
+            $envService = new Env();
+            $envService->set("MAIL_USERNAME", $settingEmail->name);
+            $envService->set("MAIL_PASSWORD", $settingEmail->password);
+
             $emailService = new EmailService();
             $details = [
                 'title' => $title,

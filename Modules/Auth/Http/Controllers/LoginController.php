@@ -14,16 +14,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Melipayamak\MelipayamakApi;
 use Modules\Admin\Entities\Setting\Setting;
+use Modules\Admin\Entities\Setting\SettingEmail;
 use Modules\Admin\Entities\Setting\SmsSetting;
 use Modules\Auth\Entities\Otp;
 use Modules\Auth\Http\Requests\LoginRequest;
 use Modules\Auth\Http\Requests\RegisterRequest;
+use SoulDoit\SetEnv\Env;
 
 class LoginController extends Controller
 {
 
     public function viewLogin()
     {
+        $settingEmail = SettingEmail::query()->first();
+        $envService = new Env();
+        $envService->set("MAIL_USERNAME", $settingEmail->name);
+        $envService->set("MAIL_PASSWORD", $settingEmail->password);
+
         $setting = Setting::query()->first();
         return view('auth::login' , compact('setting'));
     }

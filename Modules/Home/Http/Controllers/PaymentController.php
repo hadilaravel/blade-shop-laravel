@@ -7,7 +7,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Modules\Admin\Entities\OrderItem;
+use Modules\Admin\Entities\SettingPayment;
 use Modules\Admin\Entities\Shop\CartItem;
 use Modules\Admin\Entities\Shop\CashPayment;
 use Modules\Admin\Entities\Shop\Copan;
@@ -121,6 +123,10 @@ class PaymentController extends Controller
             $order->update(
                 ['payment_type' => $paymentType]
             );
+            $merchantCode = SettingPayment::query()->first();
+             Config::set('payment.drivers.zarinpal.merchantId', $merchantCode->merchant_code);
+//            $val = Config::get('payment.drivers.zarinpal.merchantId');
+//            dd($val);
             $paymentPage = $paymentService->zarinpal($order, $paymented);
             return redirect()->away($paymentPage);
         } else {

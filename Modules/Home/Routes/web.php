@@ -41,6 +41,11 @@ Route::middleware('auth')->prefix('user/profile')->group(function() {
     Route::get('my-favorites' , [CustomerController::class , 'myFavorites'])->name('user.profile.my-favorites');
     Route::get('my-comments' , [CustomerController::class , 'myComments'])->name('user.profile.my-comments');
 
+//    order
+    Route::get('orders' , [CustomerController::class , 'orders'])->name('user.profile.orders');
+    Route::get('order/detail/{order}' , [CustomerController::class , 'orderDetail'])->name('user.profile.order-detail');
+
+
     Route::get('my-address' , [CustomerController::class , 'myAddress'])->name('user.profile.my-address');
     Route::get('get-cities/{province}' , [CustomerController::class , 'getCities'])->name('user.profile.get-cities');
     Route::get('my-address/create' , [CustomerController::class , 'myAddressCreate'])->name('user.profile.my-address.create');

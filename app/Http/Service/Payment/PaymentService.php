@@ -21,12 +21,13 @@ class PaymentService
         $invoice->detail(['title' => $setting->title , 'description' => $setting->description ]);
         $callBackRoute = route('user.profile.payment-call-back' , [$order , $onlinePayment]);
 
-        $payment = Payment::callbackUrl($callBackRoute)->purchase($invoice , function ($driver, $transactionId) use ($onlinePayment){
-            $onlinePayment->update([
-                'gateway' => "زرین پال",
-                'transaction_id' => $transactionId,
-            ]);
-        });
+            $payment = Payment::callbackUrl($callBackRoute)->purchase($invoice, function ($driver, $transactionId) use ($onlinePayment) {
+                $onlinePayment->update([
+                    'gateway' => "زرین پال",
+                    'transaction_id' => $transactionId,
+                ]);
+            });
+
         return $payment->pay()->getAction();
     }
 

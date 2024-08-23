@@ -14,7 +14,8 @@
         "morilog/jalali": "3.*",
         "nwidart/laravel-modules": "10.00",
         "realrashid/sweet-alert": "^7.2",
-        "shetabit/payment": "^5.8"
+        "shetabit/payment": "^5.8",
+        "syamsoul/laravel-set-env": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

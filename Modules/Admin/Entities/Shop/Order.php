@@ -5,6 +5,7 @@ namespace Modules\Admin\Entities\Shop;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Admin\Entities\OrderItem;
 
 class Order extends Model
 {
@@ -34,6 +35,11 @@ class Order extends Model
     public function commonDiscount()
     {
         return $this->belongsTo(CommonDiscount::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 
 //    public function orderItems()
