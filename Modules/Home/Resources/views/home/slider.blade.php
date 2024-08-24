@@ -2,7 +2,7 @@
     <div dir="ltr" class="owl-carousel">
         @foreach($bannerSliders as $bannerSlider)
         <div class="box-border">
-            <a href="#"
+            <a href="{{ route('home.products') }}"
             ><img class="rounded-md md:rounded-3xl md:px-2 box-border" src="{{ $bannerSlider->image }}" alt="بنر محصولات"
                 /></a>
         </div>
@@ -14,7 +14,7 @@
     <div dir="ltr" class="owl-carousel">
         @foreach($bannerSliders as $bannerSlider)
         <div class="box-border">
-            <a href="#"
+            <a href="{{ route('home.products') }}"
             ><img class="rounded-md md:rounded-3xl md:px-2 box-border" src="{{ $bannerSlider->image }}" alt=""
                 /></a>
         </div>

@@ -87,3 +87,10 @@ Route::middleware('auth')->prefix('user/profile')->group(function() {
 
 
 });
+
+
+// site map
+Route::get('sitemap.xml' , [\Modules\Home\Http\Controllers\SiteMapController::class , 'index']);
+Route::get('sitemap.xml/posts' , [\Modules\Home\Http\Controllers\SiteMapController::class , 'posts'])->name('sitemap.posts');
+Route::get('sitemap.xml/products' , [\Modules\Home\Http\Controllers\SiteMapController::class , 'products'])->name('sitemap.products');
+Route::get('sitemap.xml/page' , [\Modules\Home\Http\Controllers\SiteMapController::class , 'page'])->name('sitemap.page');

@@ -1,7 +1,7 @@
 @extends('home::layouts.master')
 @section('head-tag')
 
-    <title>جستجو محصول</title>
+    <title>محصولات</title>
 
 @endsection
 @section('content')

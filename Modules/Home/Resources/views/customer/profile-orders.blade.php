@@ -135,8 +135,3 @@
 
 
 @endsection
-@section('script')
-    <script src="{{ asset('home-assets/js/navbar.js') }}"></script>
-    <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-@endsection
