@@ -66,6 +66,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a href="{{ route('admin.setting.social.index') }}" class="dropdown-item text-right text-white bg-info">  شبکه های اجتماعی</a>
                                                     <a href="{{ route('admin.setting.contact.index') }}" class="dropdown-item text-right text-white bg-info">  ارتباط با ما </a>
+                                                    <a href="{{ route('admin.setting.enamad.index') }}" class="dropdown-item text-right text-white bg-info">آپلود عکس اینماد</a>
                                                 </div>
                                             </div>
                                         </td>

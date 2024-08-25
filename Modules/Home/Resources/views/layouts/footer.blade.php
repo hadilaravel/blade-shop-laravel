@@ -123,11 +123,13 @@
 
                     </div>
                     <div class="flex items-center justify-center gap-x-5">
-                        <a href="#">
-                            <img class="w-28 h-auto" src="./assets/image/logoSecrets/symbol-02.png" alt="">
+                        @if(!empty($enamad))
+                        <a href="{{ $enamad->link }}">
+                            <img class="w-28 h-auto" src="{{ asset($enamad->image) }}" alt="">
                         </a>
-                        <a href="#">
-                            <img class="w-20 h-auto" src="./assets/image/logoSecrets/zarinPal.png" alt="">
+                        @endif
+                        <a href="https://www.zarinpal.com/" target="_blank">
+                            <img class="w-20 h-auto" src="{{ asset('home-assets/image/logo/zarinPal.png') }}" alt="">
                         </a>
                     </div>
                 </div>

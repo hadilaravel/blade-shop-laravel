@@ -5,6 +5,7 @@ namespace Modules\Home\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Admin\Entities\Setting\Contact;
+use Modules\Admin\Entities\Setting\Enamad;
 use Modules\Admin\Entities\Setting\Setting;
 use Modules\Admin\Entities\Setting\Social;
 
@@ -38,6 +39,7 @@ class HomeServiceProvider extends ServiceProvider
             $view->with('whatsapp' , Social::query()->where('name_id' , 2)->first());
             $view->with('telegram' , Social::query()->where('name_id' , 3)->first());
             $view->with('contacts' , Contact::all());
+            $view->with('enamad' , Enamad::query()->first());
         });
 
     }

@@ -37,6 +37,7 @@ use Modules\Admin\Http\Controllers\Shop\BannerController;
 use Modules\Admin\Http\Controllers\AboutController;
 use Modules\Admin\Http\Controllers\SettingPaymentController;
 use Modules\Admin\Http\Controllers\Setting\SettingEmailController;
+use Modules\Admin\Http\Controllers\Setting\EnamadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -425,6 +426,13 @@ Route::middleware('auth.check')->prefix('admin')->group(function (){
             Route::get('/', [SettingPaymentController::class, 'index'])->name('admin.setting.payment-setting.index');
             Route::get('edit/{settingPayment}', [SettingPaymentController::class, 'edit'])->name('admin.setting.payment-setting.edit');
             Route::put('update/{settingPayment}', [SettingPaymentController::class, 'update'])->name('admin.setting.payment-setting.update');
+        });
+
+        //        enamad
+        Route::prefix('enamad')->group(function () {
+            Route::get('/', [EnamadController::class, 'index'])->name('admin.setting.enamad.index');
+            Route::get('/edit/{enamad}', [EnamadController::class, 'edit'])->name('admin.setting.enamad.edit');
+            Route::put('/update/{enamad}', [EnamadController::class, 'update'])->name('admin.setting.enamad.update');
         });
 
         //        social
