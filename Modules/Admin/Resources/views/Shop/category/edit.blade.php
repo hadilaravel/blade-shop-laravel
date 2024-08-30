@@ -91,6 +91,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="projectinput6">  وضعیت نشان دادن در هدر: </label>
+                                        <div class="col-md-9">
+                                            <select id="projectinput6" name="status_header" class="form-control">
+                                                <option value="0" @if(old('status_header' , $productCategory->status_header) == 0) selected @endif>غیرفعال</option>
+                                                <option value="1" @if(old('status_header' , $productCategory->status_header) == 1) selected @endif>فعال</option>
+                                            </select>
+                                            @error('status_header')
+                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                           <strong>
+                                             {{ $message }}
+                                          </strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="form-actions">

@@ -197,6 +197,7 @@
                                         </div>
                                         <div class="text-left opacity-70 text-sm flex flex-col gap-y-6">
                                             <div id="guarantee_name">
+                                                -
                                             </div>
                                             <div>
                                                 {{ $product->marketable_number }} عدد
@@ -223,6 +224,8 @@
                                                     تومان
                                                 </div>
                                             </div>
+                                            @else
+                                                <p>-</p>
                                             @endif
 
                                             <div class="flex text-red-500">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('image');
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status_header')->default(0);
             $table->foreignId('parent_id')->nullable()->constrained('product_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

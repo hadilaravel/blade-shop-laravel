@@ -25,6 +25,10 @@ class PaymentController extends Controller
         $user = auth()->user();
         $cartItems = CartItem::query()->where('user_id', $user->id)->get();
         $order = Order::query()->where('user_id', $user->id)->where('order_status', 0)->first();
+        if (empty($order))
+        {
+            return to_route('home.index');
+        }
         return view('home::customer.payment', compact('cartItems', 'order'));
     }
 
@@ -154,7 +158,7 @@ class PaymentController extends Controller
 
             alert()->success('سفارش شما با موفقیت پرداخت انجام شد');
             return to_route('home.index');
-        }
+            }
 
     }
 

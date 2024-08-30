@@ -39,7 +39,7 @@ class HomeController extends Controller
         $product->view += 1;
         $product->save();
         $category = $product->category->id;
-        $relatedProducts = Product::query()->where('category_id' , $category)->where('status' , 1)->get();
+        $relatedProducts = Product::query()->where('category_id' , $category)->where('status' , 1)->get()->except($product->id);
         return view('home::product.product' ,  compact('product' , 'relatedProducts'));
     }
 
@@ -130,7 +130,7 @@ class HomeController extends Controller
         $products = $products->when($request->brands , function () use($request, $products){
             $products->whereIn('brand_id' , $request->brands);
         });
-        $products = $products->paginate(2);
+        $products = $products->paginate(25);
         $products->appends($request->query());
 //      get selected brands
         $selectedBrandsArray = [];

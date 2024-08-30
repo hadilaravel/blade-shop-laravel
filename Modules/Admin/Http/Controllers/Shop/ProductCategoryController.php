@@ -29,6 +29,7 @@ class ProductCategoryController extends Controller
     public function store(ProductCategoryRequest $request)
     {
         $inputs = [
+            'status_header' => $request->status_header,
             'name' => $request->name,
             'parent_id' => $request->parent_id,
             'status' => $request->status,
@@ -46,7 +47,7 @@ class ProductCategoryController extends Controller
 
     public function edit(ProductCategory $productCategory)
     {
-        $categories = ProductCategory::query()->where('status' , 1)->get();
+        $categories = ProductCategory::query()->where('status' , 1)->get()->except($productCategory->id);
         return view('admin::shop.category.edit' , compact('productCategory' , 'categories'));
     }
 
@@ -55,6 +56,7 @@ class ProductCategoryController extends Controller
     {
         $inputs = [
             'name' => $request->name,
+            'status_header' => $request->status_header,
             'parent_id' => $request->parent_id,
             'status' => $request->status,
         ];

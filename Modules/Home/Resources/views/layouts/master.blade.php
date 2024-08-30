@@ -6,7 +6,7 @@
     </head>
     <body  class="bg-gray-50">
 
-    @include('home::layouts.header' , compact('setting'))
+    @include('home::layouts.header' , compact('setting' , 'categories'))
 
     <div class="max-w-[1440px] mx-auto px-3">
        @yield('content')

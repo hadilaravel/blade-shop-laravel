@@ -8,6 +8,7 @@ use Modules\Admin\Entities\Setting\Contact;
 use Modules\Admin\Entities\Setting\Enamad;
 use Modules\Admin\Entities\Setting\Setting;
 use Modules\Admin\Entities\Setting\Social;
+use Modules\Admin\Entities\Shop\ProductCategory;
 
 class HomeServiceProvider extends ServiceProvider
 {
@@ -40,6 +41,7 @@ class HomeServiceProvider extends ServiceProvider
             $view->with('telegram' , Social::query()->where('name_id' , 3)->first());
             $view->with('contacts' , Contact::all());
             $view->with('enamad' , Enamad::query()->first());
+            $view->with('categories' , ProductCategory::query()->where('status_header' , 1)->where('status' , 1)->whereNull('parent_id')->get());
         });
 
     }

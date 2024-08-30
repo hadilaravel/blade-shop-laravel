@@ -36,6 +36,7 @@
                                     <th>والد</th>
                                     <th>عکس</th>
                                     <th>وضعیت</th>
+                                    <th>وضعیت نشان دادن در هدر</th>
                                     <th>تعداد زیر دسته ها</th>
                                     <th>تاریخ ساخت</th>
                                     <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
@@ -54,6 +55,9 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.shop.category.status', $category->id) }}" class="btn btn-{{ $category->status == 1 ? 'success' : 'danger' }} btn-sm"><i class="fa fa-{{ $category->status == 1 ? 'check' : 'window-close' }}"></i> </a>
+                                        </td>
+                                        <td>
+                                            {{ $category->status_header == 0 ?  'غیر فعال' : 'فعال' }}
                                         </td>
                                         <td>
                                            {{ $category->children->count() !== 0 ? convertEnglishToPersian($category->children->count()) : '-' }}

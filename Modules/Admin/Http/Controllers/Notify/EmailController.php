@@ -6,8 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Notify\Email;
+use Modules\Admin\Entities\Setting\SettingEmail;
 use Modules\Admin\Http\Requests\Notify\EmailRequest;
 use Modules\Admin\Jobs\Notify\SendEmailToUser;
+use SoulDoit\SetEnv\Env;
 
 class EmailController extends Controller
 {
@@ -15,6 +17,12 @@ class EmailController extends Controller
 
     public function index()
     {
+        $settingEmail = SettingEmail::query()->first();
+        $envService = new Env();
+        $envService->set("MAIL_USERNAME", $settingEmail->name);
+        $envService->set("MAIL_PASSWORD", $settingEmail->password);
+
+
         $emails = Email::query()->orderBy('created_at', 'desc')->paginate(15);
         return view('admin::notify.email.index', compact('emails'));
 

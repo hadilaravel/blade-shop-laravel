@@ -464,3 +464,4 @@ Route::prefix('admin-login')->group(function (){
     Route::get('/' , [AdminLoginController::class , 'show'])->name('admin.admin-login.show');
     Route::post('store' , [AdminLoginController::class , 'store'])->name('admin.admin-login.store');
 });
+

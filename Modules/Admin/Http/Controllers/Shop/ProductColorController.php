@@ -26,6 +26,8 @@ class ProductColorController extends Controller
     public function store(ProductColorRequest $request , Product $product)
     {
         $inputs = $request->all();
+        $product->marketable_number += $request->sold_number;
+        $product->save();
         $inputs['product_id'] = $product->id;
         ProductColor::query()->create($inputs);
         alert()->success('عملیات با موفقیت انجام شد');

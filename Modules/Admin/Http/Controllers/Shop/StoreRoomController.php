@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers\Shop;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\OrderItem;
 use Modules\Admin\Entities\Shop\Product;
 
 class StoreRoomController extends Controller
@@ -12,6 +13,14 @@ class StoreRoomController extends Controller
 
     public function index()
     {
+        $orderItems = OrderItem::query()->get();
+        foreach ($orderItems as $orderItem)
+        {
+            $orderItem->singleProduct->marketable_number = $orderItem->singleProduct->marketable_number - $orderItem->number;
+            $orderItem->singleProduct->sold_number += $orderItem->number;
+            $productOrder = $orderItem->singleProduct;
+            $productOrder->save();
+        }
         $products = Product::all();
         return view('admin::shop.storeroom.index' , compact('products'));
     }

@@ -18,6 +18,7 @@ class ProductCategoryRequest extends FormRequest
             return [
                 'name' => 'required|min:2|max:190|unique:product_categories,name',
                 'status' => 'required|numeric|in:0,1',
+                'status_header' => 'required|numeric|in:0,1',
                 'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp',
                 'parent_id' => 'nullable|exists:product_categories,id',
             ];
@@ -25,6 +26,7 @@ class ProductCategoryRequest extends FormRequest
             return [
                 'name' => ['required' , 'min:2' , 'max:190' , 'unique:product_categories,name,' .  $id ],
                 'status' => 'required|numeric|in:0,1',
+                'status_header' => 'required|numeric|in:0,1',
                 'image' => 'nullable|image|mimes:png,jpg,jpeg,gif,webp',
                 'parent_id' => 'nullable|exists:product_categories,id',
             ];

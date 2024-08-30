@@ -20,7 +20,7 @@
                         </a>
                         <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-left">
                             <div class="arrow_box_right">
-                                <a href="" class="dropdown-item  d-flex justify-content-between align-items-center">
+                                <a href="{{ route('user.profile') }}" class="dropdown-item  d-flex justify-content-between align-items-center">
                                     <i class="fa fa-user" style="font-size: 20px"></i>
                                     <span>پروفایل</span>
                                 </a>

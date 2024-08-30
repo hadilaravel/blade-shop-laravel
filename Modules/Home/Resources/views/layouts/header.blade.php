@@ -272,6 +272,8 @@
                         </a>
                     </li>
 
+                    @include('home::layouts.partials.categories' , ['categories' => $categories])
+
                     <li class="block relative">
                         <a
                             href="{{ route('home.about') }}"
@@ -279,65 +281,6 @@
                             <span class=" border-b-2 @if(isset($route)) {{ $route->getName() === 'home.about' ? 'border-red-600' : '' }} @endif">درباره ما</span>
                         </a>
                     </li>
-
-{{--                    <li--}}
-{{--                        class="block relative"--}}
-{{--                        x-data="{showChildren:false}"--}}
-{{--                    >--}}
-{{--                        <a--}}
-{{--                            href="./category-index.html"--}}
-{{--                            class="flex items-center h-10 leading-10 px-3 text-sm mx-1 transition text-gray-700 hover:text-red-500"--}}
-{{--                            @click.prevent="showChildren=!showChildren"--}}
-{{--                            @mouseenter="showChildren=true"--}}
-{{--                            @mouseleave="showChildren=false">--}}
-{{--                            <span>پوشاک</span>--}}
-{{--                            <span>--}}
-{{--                    <img class="w-4 mr-1" src="./assets/image/chevron-down-login.png" alt="" />--}}
-{{--                  </span>--}}
-{{--                        </a>--}}
-{{--                        <div--}}
-{{--                            class="bg-white rounded-2xl shadow-md text-sm  opacity-[0.97] absolute top-auto right-0 min-w-full w-56 z-30 mt-3"--}}
-{{--                            x-show="showChildren"--}}
-{{--                            x-transition:enter="transition ease duration-300 transform"--}}
-{{--                            x-transition:enter-start="opacity-0 translate-y-2"--}}
-{{--                            x-transition:enter-end="opacity-100 translate-y-0"--}}
-{{--                            x-transition:leave="transition ease duration-300 transform"--}}
-{{--                            x-transition:leave-start="opacity-100 translate-y-0"--}}
-{{--                            x-transition:leave-end="opacity-0 translate-y-4"--}}
-{{--                            style="display: none"--}}
-{{--                            @mouseenter="showChildren=true"--}}
-{{--                            @mouseleave="showChildren=false">--}}
-{{--                            <div--}}
-{{--                                class="bg-white rounded-2xl w-full relative z-10 py-2 px-2">--}}
-{{--                                <ul class="list-reset">--}}
-{{--                                    <li--}}
-{{--                                        class="relative">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">مردانه</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li--}}
-{{--                                        class="relative">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">زنانه</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li--}}
-{{--                                        class="relative">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">بچگانه</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
 
                 </ul>
             </div>
@@ -415,6 +358,9 @@
                         </a>
                     </li>
 
+                    @include('home::layouts.partials.res-categories' , ['categories' => $categories])
+
+
                     <li class="relative flex">
                         <a
                             href="{{ route('home.about') }}"
@@ -423,81 +369,6 @@
                         </a>
                     </li>
 
-{{--                    <li--}}
-{{--                        class="relative flex"--}}
-{{--                        x-data="{showChildren:false}"--}}
-{{--                        @click.away="showChildren=false">--}}
-{{--                        <a--}}
-{{--                            href="./category-index.html"--}}
-{{--                            class="flex justify-between items-center h-10 text-sm opacity-90 leading-10 px-3 cursor-pointer no-underline w-full hover:no-underline duration-100 mx-1 transition rounded-xl hover:bg-red-100"--}}
-{{--                            @click.prevent="showChildren=!showChildren">--}}
-{{--                            <span>کودک و نوزاد</span>--}}
-{{--                            <span>--}}
-{{--                    <img class="w-4 mr-1" src="./assets/image/chevron-down-login.png" alt="" />--}}
-{{--                  </span>--}}
-{{--                        </a>--}}
-{{--                        <div--}}
-{{--                            class="bg-white rounded-2xl shadow-lg border-1 border-gray-50 text-sm absolute top-full right-0 min-w-full w-56 z-30 mt-1"--}}
-{{--                            x-show="showChildren"--}}
-{{--                            x-transition:enter="transition ease duration-300 transform"--}}
-{{--                            x-transition:enter-start="opacity-0 translate-y-2"--}}
-{{--                            x-transition:enter-end="opacity-100 translate-y-0"--}}
-{{--                            x-transition:leave="transition ease duration-300 transform"--}}
-{{--                            x-transition:leave-start="opacity-100 translate-y-0"--}}
-{{--                            x-transition:leave-end="opacity-0 translate-y-4"--}}
-{{--                            style="display: none">--}}
-{{--                            </span>--}}
-{{--                            <div--}}
-{{--                                class="bg-white rounded-2xl w-full relative z-10 py-2 px-2">--}}
-{{--                                <ul class="list-reset">--}}
-{{--                                    <li--}}
-{{--                                        class="relative"--}}
-{{--                                        x-data="{showChildren:false}"--}}
-{{--                                        @mouseleave="showChildren=false"--}}
-{{--                                        @mouseenter="showChildren=true">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">پوشک</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li--}}
-{{--                                        class="relative"--}}
-{{--                                        x-data="{showChildren:false}"--}}
-{{--                                        @mouseleave="showChildren=false"--}}
-{{--                                        @mouseenter="showChildren=true">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">بهداشت و حمام</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li--}}
-{{--                                        class="relative"--}}
-{{--                                        x-data="{showChildren:false}"--}}
-{{--                                        @mouseleave="showChildren=false"--}}
-{{--                                        @mouseenter="showChildren=true">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">سرگرمی و غذاخوری</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li--}}
-{{--                                        class="relative"--}}
-{{--                                        x-data="{showChildren:false}"--}}
-{{--                                        @mouseleave="showChildren=false"--}}
-{{--                                        @mouseenter="showChildren=true">--}}
-{{--                                        <a--}}
-{{--                                            href="./category.html"--}}
-{{--                                            class="px-4 py-2 flex w-full items-start hover:bg-red-100 rounded-lg transition no-underline hover:no-underline duration-100 cursor-pointer">--}}
-{{--                                            <span class="flex-1">کالای خواب</span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
                 </ul>
             </div>
         </nav>
