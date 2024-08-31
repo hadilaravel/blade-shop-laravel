@@ -36,7 +36,7 @@
                                     متن تیکت:
                                 </div>
                                 <div class="text-sm opacity-90">
-                                    {{ $ticket->body }}
+                                    {!! $ticket->body !!}
                                 </div>
                             </div>
                         </div>

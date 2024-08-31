@@ -39,7 +39,7 @@
                                     متن تیکت:
                                 </div>
                                 <div class="text-sm opacity-90">
-                                    {{ \Illuminate\Support\Str::limit($ticket->body , 70 )}}
+                                    {!!  \Illuminate\Support\Str::limit($ticket->body , 70 ) !!}
                                 </div>
                             </div>
                         </div>
