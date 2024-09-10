@@ -70,7 +70,7 @@ class Order extends Model
             case 0:
                 $result = 'آنلاین';
                 break;
-            case 1:
+            case 2:
                 $result = 'در محل';
                 break;
         }
